@@ -1,6 +1,6 @@
 # Solana Development Skills using Light Protocol
 
-AI agent skills for rent-free Solana development — light token and mint accounts, compressed PDA, tokens, PDAs, and ZK compression.
+AI agent skills for rent-free Solana development: light PDA, token and mint accounts, and compressed PDA.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-Compatible-green.svg)](https://agentskills.io)
