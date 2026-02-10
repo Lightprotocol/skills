@@ -14,7 +14,7 @@ These skills work with any AI agent. We recommend [Claude Code](https://claude.a
 Add the marketplace:
 
 ```
-/plugin marketplace add lightprotocol/ai-tools
+/plugin marketplace add Lightprotocol/agent-skills
 ```
 
 Install skills:
@@ -29,14 +29,14 @@ Install skills:
 
 1. Open Settings (**Cmd+Shift+J** / **Ctrl+Shift+J**)
 2. Navigate to **Rules & Commands** → **Project Rules** → **Add Rule** → **Remote Rule (GitHub)**
-3. Enter: `https://github.com/lightprotocol/ai-tools.git`
+3. Enter: `https://github.com/Lightprotocol/agent-skills.git`
 
 Skills are auto-discovered based on context. Ask about light-token, defi, payments, or program migration and the agent uses the relevant skill automatically.
 
 ### Any Agent
 
 ```
-npx skills add lightprotocol/ai-tools
+npx skills add Lightprotocol/agent-skills
 ```
 
 ## Available skills
