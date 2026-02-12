@@ -1,5 +1,5 @@
 ---
-name: light-testing
+name: testing
 description: "Test Light Protocol programs and clients for localnet, devnet and mainnet"
 license: MIT
 author: Light Protocol

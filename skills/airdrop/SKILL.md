@@ -1,5 +1,5 @@
 ---
-name: solana-airdrop-client
+name: airdrop
 description: "Distribute SPL tokens with 5000x cheaper cost. For Airdrops, Depins, or Token Distribution. Can implement custom claim for advanced usage."
 ---
 
