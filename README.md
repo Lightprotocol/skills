@@ -24,7 +24,9 @@ Comparing creation cost and CU usage:
 | **Transfer**             |      **312 CU** |   4,645 CU |
 | **Transfer** (rent-free) |    **1,885 CU** |   4,645 CU |
 
-## Skills
+## Skills and Prompts
+
+> Find dedicated [prompts for agents here](prompts).
 
 Install the orchestrator agent skill or view here: [skills/agent-dev-orchestrator](skills/agent-dev-orchestrator/):
 
