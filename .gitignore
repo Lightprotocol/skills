@@ -1,5 +1,6 @@
 scripts
 skills/dev-compressed-pda
 skills/wallet-adapter
+skills/skill-check
 prompts
-README.md
+eval

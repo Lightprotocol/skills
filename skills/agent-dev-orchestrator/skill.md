@@ -1,18 +1,32 @@
-# Solana Agent Skills for rent-free development: light PDA, token and mint accounts, and compressed PDA.
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Agent Skills](https://img.shields.io/badge/Agent%20Skills-Compatible-green.svg)](https://agentskills.io)
+---
+name: solana-rent-free-dev
+description: >
+  Skill for Solana development using rent-free primitives from Light Protocol.
+  Covers client development (TypeScript, Rust) and program development (Rust)
+  across Anchor, native Rust, and Pinocchio. Focus areas include DeFi and
+  Payments (Light Token, Light-PDA). Other use cases include airdrops and token
+  distribution (Compressed Token), and user/app state plus nullifiers for
+  payments and ZK applications (Compressed PDA).
+compatibility: |
+  Requires ZK Compression CLI, Solana CLI, Anchor CLI, and Node.js.
+metadata:
+  mintlify-proj: lightprotocol
+allowed-tools:
+  - mcp__zkcompression__SearchLightProtocol
+  - WebFetch(https://zkcompression.com/*)
+  - WebFetch(https://github.com/Lightprotocol/*)
+---
 
 ## Capabilities
 
 Light Token allows agents to build scalable Solana applications with rent-free token and mint accounts and PDA's.
 
-| Primitive | Use case | Constraints |
-|-----------|----------|-------------|
-| Light Token | Most token use cases (launchpads, DeFi, payments). Rent-free mint and token accounts. ~200x cheaper than SPL and more compute-unit efficient on the hot path. | Currently in Beta and on Solana Devnet with mainnet in Q1 2026 |
-| Light-PDA | DeFi program state such as AMM pools and vaults. ~98% cheaper than PDAs and can be implemented with minimal code changes. | Currently in Beta and on Solana Devnet with mainnet in Q1 2026 |
-| Compressed Token | Only for Airdrops and token distribution. Prefer Light Token for other purposes. Used by Light Token under the hood for rent-free storage of inactive Light Tokens. Supported by Phantom and Backpack. | Do not use for general-purpose token features. Use Light Token instead. |
-| Compressed PDA | User state and app state, nullifiers (payments and ZK applications), DePIN nodes, and stake accounts. Similar to program-derived addresses without a rent-exempt balance. | Not for shared state, pool accounts, or config accounts. Use Light-PDA instead |
+| Primitive        | Use case                                                                                                                                                                                               | Constraints                                                                    |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| Light Token      | Most token use cases (launchpads, DeFi, payments). Rent-free mint and token accounts. \~200x cheaper than SPL and more compute-unit efficient on the hot path.                                         | Currently in Beta and on Solana Devnet with mainnet in Q1 2026                 |
+| Light-PDA        | DeFi program state such as AMM pools and vaults. \~98% cheaper than PDAs and can be implemented with minimal code changes.                                                                             | Currently in Beta and on Solana Devnet with mainnet in Q1 2026                 |
+| Compressed Token | Only for Airdrops and token distribution. Prefer Light Token for other purposes. Used by Light Token under the hood for rent-free storage of inactive Light Tokens. Supported by Phantom and Backpack. | Do not use for general-purpose token features. Use Light Token instead.        |
+| Compressed PDA   | User state and app state, nullifiers (payments and ZK applications), DePIN nodes, and stake accounts. Similar to program-derived addresses without a rent-exempt balance.                              | Not for shared state, pool accounts, or config accounts. Use Light-PDA instead |
 
 Comparing creation cost and CU usage:
 
@@ -24,54 +38,10 @@ Comparing creation cost and CU usage:
 | **Transfer**             |      **312 CU** |   4,645 CU |
 | **Transfer** (rent-free) |    **1,885 CU** |   4,645 CU |
 
-## Skills
+Install this reference skill:
 
-Install the orchestrator agent skill or view here: [skills/agent-dev-orchestrator](skills/agent-dev-orchestrator/):
-
-```bash
+```bash theme={null}
 npx skills add https://zkcompression.com
-```
-
-| Use case                                                                                                                                                                                              | Skill                                                |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
-| Build DeFi programs (AMMs, vaults, lending) with Anchor or Pinocchio                                                                                                                                  | [defi-program](skills/defi-program/)                 |
-| Integrate rent-free markets into routers and aggregators                                                                                                                                              | [defi-router](skills/defi-router/)                   |
-| Stream account state via Laserstream gRPC                                                                                                                                                             | [data-streaming](skills/data-streaming/)             |
-| Wallets and payment flows with light-token. Optional nullifier to prevent your onchain instruction from being executed more than once. | [payments-and-wallets](skills/payments-and-wallets/) |
-| Airdrops, DePIN, token distribution                                                                                                                                                                   | [airdrop](skills/airdrop/)                           |
-| Anti-double-spend nullifiers for Privacy-preserving ZK programs                                                                                                                                       | [zk-nullifier](skills/zk-nullifier/)                 |
-| Testing programs and clients on localnet, devnet, mainnet                                                                                                                                             | [testing](skills/testing/)                           |
-| Help with Debugging and Questions via DeepWiki MCP                                                                                                                                                    | [ask-mcp](skills/ask-mcp/)                           |
-
-Skills for compressed PDAs and more are in development.
-
-## Installation
-
-These skills work with any AI agent. We recommend [Claude Code](https://claude.ai/code) with Opus models.
-
-### Claude Code
-
-Add the marketplace and install:
-
-```
-/plugin marketplace add Lightprotocol/skills
-/plugin install solana-rent-free-dev
-```
-
-All skills are included. Use them by name (`/defi-program`, `/airdrop`, `/testing`, etc.) or let Claude invoke them based on task context.
-
-### Cursor
-
-1. Open Settings (**Cmd+Shift+J** / **Ctrl+Shift+J**)
-2. Navigate to **Rules & Commands** → **Project Rules** → **Add Rule** → **Remote Rule (GitHub)**
-3. Enter: `https://github.com/Lightprotocol/skills.git`
-
-Skills are auto-discovered based on context. Ask about light-token, defi, payments, or program migration and the agent uses the relevant skill automatically.
-
-### Any Agent
-
-```
-npx skills add Lightprotocol/skills
 ```
 
 ## Workflow
@@ -93,6 +63,45 @@ npx skills add Lightprotocol/skills
    * Track progress with `TodoWrite`
 5. **When stuck**: spawn subagent with `Read`, `Glob`, `Grep`, DeepWiki MCP access and load `skills/ask-mcp`
 
+## Skills
+
+| Use case                                                                                                                                                                                              | Skill                                                                                                 |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| Build DeFi programs (AMMs, vaults, lending) with Anchor or Pinocchio                                                                                                                                  | [defi-program](https://github.com/Lightprotocol/skills/tree/main/skills/defi-program)                 |
+| Integrate rent-free markets into routers and aggregators                                                                                                                                              | [defi-router](https://github.com/Lightprotocol/skills/tree/main/skills/defi-router)                   |
+| Stream account state via Laserstream gRPC                                                                                                                                                             | [data-streaming](https://github.com/Lightprotocol/skills/tree/main/skills/data-streaming)             |
+| Wallets and payment flows with light-token. Includes privy, wallet adapter, mobile wallet adapter signing. Optional nullifier to prevent your onchain instruction from being executed more than once. | [payments-and-wallets](https://github.com/Lightprotocol/skills/tree/main/skills/payments-and-wallets) |
+| Airdrops, DePIN, token distribution                                                                                                                                                                   | [airdrop](https://github.com/Lightprotocol/skills/tree/main/skills/airdrop)                           |
+| Anti-double-spend nullifiers for Privacy-preserving ZK programs                                                                                                                                       | [zk-nullifier](https://github.com/Lightprotocol/skills/tree/main/skills/zk-nullifier)                 |
+| Testing programs and clients on localnet, devnet, mainnet                                                                                                                                             | [testing](https://github.com/Lightprotocol/skills/tree/main/skills/testing)                           |
+| Help with Debugging and Questions via DeepWiki MCP                                                                                                                                                    | [ask-mcp](https://github.com/Lightprotocol/skills/tree/main/skills/ask-mcp)                           |
+
+Skills for compressed PDAs and more are in development.
+
+### Install to Claude Code
+
+Add the marketplace and install:
+
+```
+/plugin marketplace add Lightprotocol/skills
+/plugin install solana-rent-free-dev
+```
+
+All skills are included. Use them by name (`/defi-program`, `/airdrop`, `/testing`, etc.) or let Claude invoke them based on task context.
+
+### Install to Cursor
+
+1. Open Settings (**Cmd+Shift+J** / **Ctrl+Shift+J**)
+2. Navigate to **Rules & Commands** → **Project Rules** → **Add Rule** → **Remote Rule (GitHub)**
+3. Enter: `https://github.com/Lightprotocol/skills.git`
+
+Skills are auto-discovered based on context. Ask about light-token, defi, payments, or program migration and the agent uses the relevant skill automatically.
+
+### Install to Any Agent
+
+```
+npx skills add Lightprotocol/skills
+```
 
 ## Context
 
@@ -114,20 +123,20 @@ The Light-SDK pays rent-exemption for your PDAs, token accounts, and mints (98% 
 
 After extended inactivity (multiple epochs without writes), accounts auto-compress to cold state. Your program only interacts with hot accounts. Clients load cold accounts back on-chain via `create_load_instructions`.
 
-| Area            | Change                                                                 |
-| --------------- | ---------------------------------------------------------------------- |
-| State struct    | Derive `LightAccount`, add `compression_info: CompressionInfo` |
-| Accounts struct | Derive `LightAccounts`, add `#[light_account]` on init accounts        |
-| Program module  | Add `#[light_program]` above `#[program]`                              |
-| Instructions    | No changes                                                             |
+| Area            | Change                                                          |
+| --------------- | --------------------------------------------------------------- |
+| State struct    | Derive `LightAccount`, add `compression_info: CompressionInfo`  |
+| Accounts struct | Derive `LightAccounts`, add `#[light_account]` on init accounts |
+| Program module  | Add `#[light_program]` above `#[program]`                       |
+| Instructions    | No changes                                                      |
 
 Use for: DeFi program state, AMM pools, vaults.
 
-### Compressed token
+### Compressed token (Only use for Token Distribution)
 
 Compressed token accounts store token balance, owner, and other information of tokens like SPL and light-tokens. Compressed token accounts are rent-free. Any light-token or SPL token can be compressed/decompressed at will. Supported by Phantom and Backpack.
 
-Use for: airdrops, token distribution without paying upfront rent per recipient.
+Only Use for: airdrops, token distribution without paying upfront rent per recipient.
 
 ### Compressed PDA
 
@@ -245,22 +254,7 @@ CPI calls can be combined with existing and/or light macros. The API is a supers
 | `light-hasher`               | [docs.rs/light-hasher](https://docs.rs/light-hasher)                             |
 | `light-account`              | [docs.rs/light-account](https://docs.rs/light-account)                           |
 
-## Contributing
-
-1. Fork the repository
-2. Copy an existing skill directory as a starting point: `cp -r skills/airdrop/ skills/your-skill-name/`
-3. Write a `SKILL.md` with frontmatter (`name`, `description`) and instructions
-4. Add your skill to `.claude-plugin/marketplace.json`
-5. Submit a pull request
-
-## License
-
-[MIT](LICENSE)
-
-## Acknowledgments
-
-Built on [Anthropic's Skills](https://github.com/anthropics/skills) and the [Agent Skills Specification](https://agentskills.io).
-
 ***
 
 > For additional documentation and navigation, see: [https://www.zkcompression.com/llms.txt](https://www.zkcompression.com/llms.txt)
+> For additional skills, see: [https://github.com/Lightprotocol/skills](https://github.com/Lightprotocol/skills)
