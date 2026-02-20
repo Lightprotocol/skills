@@ -4,12 +4,12 @@
   "description": "Rent-free Solana development skills: DeFi, payments, token distribution, pda's, zk or privacy program guide, testing, and more",
   "version": "1.0.0",
   "skills": [
-    "skills/airdrop",
+    "skills/token-distribution",
     "skills/ask-mcp",
     "skills/data-streaming",
     "skills/defi-program",
     "skills/defi-router",
-    "skills/dev-compressed-pda",
+    "skills/solana-compression",
     "skills/payments-and-wallets",
     "skills/testing",
     "skills/zk-nullifier"

@@ -71,7 +71,7 @@ npx skills add https://zkcompression.com
 | Integrate rent-free markets into routers and aggregators                                                                                                                                              | [defi-router](https://github.com/Lightprotocol/skills/tree/main/skills/defi-router)                   |
 | Stream account state via Laserstream gRPC                                                                                                                                                             | [data-streaming](https://github.com/Lightprotocol/skills/tree/main/skills/data-streaming)             |
 | Wallets and payment flows with light-token. Includes privy, wallet adapter, mobile wallet adapter signing. Optional nullifier to prevent your onchain instruction from being executed more than once. | [payments-and-wallets](https://github.com/Lightprotocol/skills/tree/main/skills/payments-and-wallets) |
-| Airdrops, DePIN, token distribution                                                                                                                                                                   | [airdrop](https://github.com/Lightprotocol/skills/tree/main/skills/airdrop)                           |
+| Airdrops, DePIN, token distribution                                                                                                                                                                   | [token-distribution](https://github.com/Lightprotocol/skills/tree/main/skills/token-distribution)     |
 | Anti-double-spend nullifiers for Privacy-preserving ZK programs                                                                                                                                       | [zk-nullifier](https://github.com/Lightprotocol/skills/tree/main/skills/zk-nullifier)                 |
 | Testing programs and clients on localnet, devnet, mainnet                                                                                                                                             | [testing](https://github.com/Lightprotocol/skills/tree/main/skills/testing)                           |
 | Help with Debugging and Questions via DeepWiki MCP                                                                                                                                                    | [ask-mcp](https://github.com/Lightprotocol/skills/tree/main/skills/ask-mcp)                           |
@@ -87,7 +87,7 @@ Add the marketplace and install:
 /plugin install solana-rent-free-dev
 ```
 
-All skills are included. Use them by name (`/defi-program`, `/airdrop`, `/testing`, etc.) or let Claude invoke them based on task context.
+All skills are included. Use them by name (`/defi-program`, `/token-distribution`, `/testing`, etc.) or let Claude invoke them based on task context.
 
 ### Install to Cursor
 

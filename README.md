@@ -40,12 +40,11 @@ npx skills add https://zkcompression.com
 | Integrate rent-free markets into routers and aggregators                                                                                                                                              | [defi-router](skills/defi-router/)                   |
 | Stream account state via Laserstream gRPC                                                                                                                                                             | [data-streaming](skills/data-streaming/)             |
 | Wallets and payment flows with light-token. Optional nullifier to prevent your onchain instruction from being executed more than once. | [payments-and-wallets](skills/payments-and-wallets/) |
-| Airdrops, DePIN, token distribution                                                                                                                                                                   | [airdrop](skills/airdrop/)                           |
+| Airdrops, DePIN, token distribution                                                                                                                                                                   | [token-distribution](skills/token-distribution/)     |
 | Anti-double-spend nullifiers for Privacy-preserving ZK programs                                                                                                                                       | [zk-nullifier](skills/zk-nullifier/)                 |
+| For per-user state, DePIN nodes, and infrequently accessed app state with compressed PDAs                                                                                                     | [solana-compression](skills/solana-compression/)     |
 | Testing programs and clients on localnet, devnet, mainnet                                                                                                                                             | [testing](skills/testing/)                           |
 | Help with Debugging and Questions via DeepWiki MCP                                                                                                                                                    | [ask-mcp](skills/ask-mcp/)                           |
-
-Skills for compressed PDAs and more are in development.
 
 ## Installation
 
@@ -60,7 +59,7 @@ Add the marketplace and install:
 /plugin install solana-rent-free-dev
 ```
 
-All skills are included. Use them by name (`/defi-program`, `/airdrop`, `/testing`, etc.) or let Claude invoke them based on task context.
+All skills are included. Use them by name (`/defi-program`, `/token-distribution`, `/testing`, etc.) or let Claude invoke them based on task context.
 
 ### Cursor
 
@@ -250,7 +249,7 @@ CPI calls can be combined with existing and/or light macros. The API is a supers
 ## Contributing
 
 1. Fork the repository
-2. Copy an existing skill directory as a starting point: `cp -r skills/airdrop/ skills/your-skill-name/`
+2. Copy an existing skill directory as a starting point: `cp -r skills/token-distribution/ skills/your-skill-name/`
 3. Write a `SKILL.md` with frontmatter (`name`, `description`) and instructions
 4. Add your skill to `.claude-plugin/marketplace.json`
 5. Submit a pull request
