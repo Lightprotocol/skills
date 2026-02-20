@@ -264,7 +264,7 @@ For the full Pinocchio test lifecycle (init with proof, swap, compress, load + s
 
 ## How it works
 
-The SDK sponsors rent-exemption for all accounts. After extended inactivity, Forester nodes compress accounts to cold state — your program code does not change. See [hot/cold model](../SKILL.md#hot-vs-cold-model) for overhead numbers. For client-side cold-account loading details, see the `defi-router` skill.
+The SDK sponsors rent-exemption for all accounts. After extended inactivity, Forester nodes compress accounts to cold state — your program code does not change. See [hot/cold model](../SKILL.md#hot-vs-cold-model) for overhead numbers. For client-side cold-account loading details, see [router.md](./router.md).
 
 ## FAQ
 

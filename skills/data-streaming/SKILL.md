@@ -61,3 +61,10 @@ This skill is for continuous data pipelines: aggregators, market makers, and ind
 | Resource | Link |
 |----------|------|
 | Photon indexer | [github.com/helius-labs/photon](https://github.com/helius-labs/photon) |
+
+## SDK references
+
+| Package | Link |
+|---------|------|
+| `@lightprotocol/stateless.js` | [API docs](https://lightprotocol.github.io/light-protocol/stateless.js/index.html) |
+| `light-client` | [docs.rs](https://docs.rs/light-client/latest/light_client/) |

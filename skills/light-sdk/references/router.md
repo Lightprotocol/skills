@@ -48,7 +48,24 @@ ixs.push(sdk.swap_ix(&swap_params)?);
 
 ## The LightProgramInterface trait
 
-Each rent-free AMM SDK exposes this trait. It returns which accounts an instruction reads/writes and builds load specs for cold ones. See [trait.md](./trait.md) for the trait definition. For framework-specific implementations, see the `defi-program` skill's `client-sdk.md`.
+Each rent-free AMM SDK exposes this trait. It returns which accounts an instruction reads/writes and builds load specs for cold ones. For framework-specific implementations, see [client-sdk.md](./client-sdk.md).
+
+```rust
+pub trait LightProgramInterface {
+    type Variant: Pack<AccountMeta> + Clone + Debug;
+    type Instruction;
+
+    fn program_id() -> Pubkey;
+    fn instruction_accounts(&self, ix: &Self::Instruction) -> Vec<Pubkey>;
+    fn load_specs(
+        &self,
+        cold_accounts: &[AccountInterface],
+    ) -> Result<Vec<AccountSpec<Self::Variant>>, Box<dyn Error>>;
+}
+```
+
+- `instruction_accounts` -- returns the pubkeys the instruction reads/writes.
+- `load_specs` -- given cold `AccountInterface`s (with `ColdContext`), returns the `AccountSpec`s that `create_load_instructions` needs to bring them back on-chain.
 
 ## Full example
 
@@ -129,33 +146,9 @@ They stay cold until any client loads them back in-flight via `create_load_instr
 
 **Touching cold markets is rare.** The hot path has zero overhead.
 
-## FAQ
+## Jito bundles
 
-**Do I need to change my swap instructions?**
-
-No. Swap instructions are identical. If the market is hot, the transaction
-is the same as today. If cold, you prepend `create_load_instructions`.
-
-**Can I quote cold markets?**
-
-Yes. `get_account_interface` returns full account data regardless of hot/cold.
-Quoting works the same.
-
-**Do rent-free markets increase latency?**
-
-**Hot (common path)**: No.
-
-**Cold**: Loading accounts adds 1-200ms depending on whether a validity proof
-is needed. If load + swap exceed Solana's 1232 byte limit, use Jito bundles.
-
-**How long do accounts stay hot after loading?**
-
-Until they go inactive again. Each write resets the timer. The inactivity
-threshold is configurable by the program owner (e.g. 24h of no writes).
-
-**What if load + swap exceed Solana's tx size limit?**
-
-Send as a Jito bundle. The SDK deduplicates many account keys over the wire, so instructions that appear large in isolation will be incremental when combined with swap/deposit instructions.
+If load + swap exceed Solana's 1232-byte tx limit, send as a Jito bundle. The SDK deduplicates many account keys over the wire, so instructions that appear large in isolation will be incremental when combined with swap/deposit instructions.
 
 ```rust
 use solana_sdk::{instruction::Instruction, pubkey::Pubkey, system_instruction};
@@ -192,6 +185,30 @@ let resp = client
     }))
     .send().await?;
 ```
+
+## FAQ
+
+**Do I need to change my swap instructions?**
+
+No. Swap instructions are identical. If the market is hot, the transaction
+is the same as today. If cold, you prepend `create_load_instructions`.
+
+**Can I quote cold markets?**
+
+Yes. `get_account_interface` returns full account data regardless of hot/cold.
+Quoting works the same.
+
+**Do rent-free markets increase latency?**
+
+**Hot (common path)**: No.
+
+**Cold**: Loading accounts adds 1-200ms depending on whether a validity proof
+is needed. If load + swap exceed Solana's 1232 byte limit, use Jito bundles.
+
+**How long do accounts stay hot after loading?**
+
+Until they go inactive again. Each write resets the timer. The inactivity
+threshold is configurable by the program owner (e.g. 24h of no writes).
 
 **Do RPC providers support get_account_interface?**
 

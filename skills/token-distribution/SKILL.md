@@ -86,7 +86,7 @@ const tokenPoolInfo = selectTokenPoolInfo(await getTokenPoolInfos(rpc, mint));
 const ix = await CompressedTokenProgram.compress({
   payer: payer.publicKey,
   owner: payer.publicKey,
-  source: sourceAta.address,           // SPL ATA holding tokens
+  source: sourceAta.address,           // SPL associated token account holding tokens
   toAddress: recipients,                // PublicKey[]
   amount: recipients.map(() => bn(amount)),
   mint,
@@ -146,3 +146,10 @@ For vesting, clawback, or user-initiated claims:
 - **Docs**: [Airdrop Guide](https://www.zkcompression.com/compressed-tokens/airdrop)
 - **Code**: [examples-light-token](https://github.com/Lightprotocol/examples-light-token)
 - **Tool**: [Airship by Helius](https://airship.helius.dev/)
+
+## SDK references
+
+| Package | Link |
+|---------|------|
+| `@lightprotocol/stateless.js` | [API docs](https://lightprotocol.github.io/light-protocol/stateless.js/index.html) |
+| `@lightprotocol/compressed-token` | [API docs](https://lightprotocol.github.io/light-protocol/compressed-token/index.html) |

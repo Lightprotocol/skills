@@ -127,7 +127,7 @@ Source: `examples-light-token/privy/react-privy-light-token/src/hooks/useTransfe
 
 ## Loading compressed accounts
 
-When the source ATA may be compressed, prepend load instructions:
+When the source associated token account may be compressed, prepend load instructions:
 
 ```typescript
 const loadIxs = await createLoadAtaInstructions(rpc, sourceAta, owner, mint, payer);

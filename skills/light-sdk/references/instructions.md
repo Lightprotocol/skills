@@ -104,7 +104,7 @@ pub fn create_mint(ctx: Context<CreateMintAccounts>, /* params omitted */) -> Re
     Ok(())
 }
 
-// 2. Create ATA — .idempotent() skips if exists, .rent_free() sponsors rent
+// 2. Create associated token account — .idempotent() skips if exists, .rent_free() sponsors rent
 pub fn create_ata(ctx: Context<CreateAtaAccounts>, bump: u8) -> Result<()> {
     CreateAssociatedAccountCpi {
         payer: ctx.accounts.payer.to_account_info(),

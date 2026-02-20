@@ -193,7 +193,7 @@ pub struct CreateMintWithMetadataParams {
 }
 ```
 
-### ATA init (create-ata)
+### Associated token account init (create-ata)
 
 ```rust
 /// CHECK: Validated by light-token CPI
@@ -221,7 +221,7 @@ pub ata: UncheckedAccount<'info>,
 pub vault: UncheckedAccount<'info>,
 ```
 
-### Transfer with destination ATA init (token-transfer)
+### Transfer with destination associated token account init (token-transfer)
 
 Macro init for the destination combined with `TransferInterfaceCpi` in the handler body:
 
@@ -243,11 +243,11 @@ Different account types require different infrastructure accounts:
 **PDA (counter):**
 - `compression_config: AccountInfo<'info>` — validated by Light System CPI
 
-**Token accounts (mint, ATA, token account):**
+**Token accounts (mint, associated token account, token account):**
 - `light_token_compressible_config: AccountInfo<'info>`
 - `rent_sponsor: AccountInfo<'info>` (mut)
 - `light_token_program: AccountInfo<'info>`
-- `light_token_cpi_authority: AccountInfo<'info>` (for mint and token account; not needed for ATA)
+- `light_token_cpi_authority: AccountInfo<'info>` (for mint and token account; not needed for associated token account)
 
 The create-ata and create-token-account examples show explicit address constraints using known constants:
 
@@ -267,7 +267,7 @@ pub light_token_program: AccountInfo<'info>,
 
 ## Hybrid Pattern
 
-The token-transfer example combines macro account init with explicit CPI in the handler body. The macro creates the destination ATA, while `TransferInterfaceCpi` executes the transfer:
+The token-transfer example combines macro account init with explicit CPI in the handler body. The macro creates the destination associated token account, while `TransferInterfaceCpi` executes the transfer:
 
 ```rust
 use light_token::instruction::TransferInterfaceCpi;

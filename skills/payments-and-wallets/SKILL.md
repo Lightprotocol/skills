@@ -84,3 +84,11 @@ const rpc = createRpc(RPC_ENDPOINT);
 - [Wallets docs](https://zkcompression.com/light-token/toolkits/for-wallets)
 - [GitHub examples](https://github.com/Lightprotocol/examples-light-token/tree/main/toolkits/payments-and-wallets)
 - [Nullifier program](https://github.com/Lightprotocol/nullifier-program/)
+
+## SDK references
+
+| Package | Link |
+|---------|------|
+| `@lightprotocol/stateless.js` | [API docs](https://lightprotocol.github.io/light-protocol/stateless.js/index.html) |
+| `@lightprotocol/compressed-token` | [API docs](https://lightprotocol.github.io/light-protocol/compressed-token/index.html) |
+| `@lightprotocol/nullifier-program` | [npm](https://www.npmjs.com/package/@lightprotocol/nullifier-program) |

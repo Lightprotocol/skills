@@ -1,10 +1,10 @@
-<Prompt description="Add create-ATA CPI to an Anchor program" actions={["copy", "cursor"]}>
+<Prompt description="Add create associated token account CPI to an Anchor program" actions={["copy", "cursor"]}>
 {`---
-description: Add create-ATA CPI to an Anchor program
+description: Add create associated token account CPI to an Anchor program
 allowed-tools: Bash, Read, Write, Edit, Glob, Grep, WebFetch, AskUserQuestion, Task, TaskCreate, TaskGet, TaskList, TaskUpdate, TaskOutput, mcp__deepwiki, mcp__zkcompression
 ---
 
-## Add create-ATA CPI to an Anchor program
+## Add create associated token account CPI to an Anchor program
 
 Context:
 - Guide: https://zkcompression.com/light-token/cookbook/create-ata
@@ -17,17 +17,17 @@ Key CPI struct: \`light_token::instruction::CreateAssociatedAccountCpi\`
 ### 1. Index project
 - Grep \`declare_id|#\[program\]|anchor_lang|Account<|Pubkey|invoke|ata|associated|owner|mint\` across src/
 - Glob \`**/*.rs\` and \`**/Cargo.toml\` for project structure
-- Identify: program ID, existing instructions, account structs, ATA derivation
+- Identify: program ID, existing instructions, account structs, associated token account derivation
 - Read Cargo.toml — note existing dependencies and framework version
 - Task subagent (Grep/Read/WebFetch) if project has multiple crates to scan in parallel
 
 ### 2. Read references
-- WebFetch the guide above — review the CPI tab under Program: ATA creation with .rent_free() chain
+- WebFetch the guide above — review the CPI tab under Program: associated token account creation with .rent_free() chain
 - WebFetch skill.md — check for a dedicated skill and resources matching this task
 - TaskCreate one todo per phase below to track progress
 
 ### 3. Clarify intention
-- AskUserQuestion: what is the goal? (add create-ATA to existing program, new program from scratch, migrate from SPL create_associated_token_account)
+- AskUserQuestion: what is the goal? (add create associated token account to existing program, new program from scratch, migrate from SPL create_associated_token_account)
 - AskUserQuestion: should the payer be an external signer or a PDA? (determines invoke vs invoke_signed)
 - Summarize findings and wait for user confirmation before implementing
 
@@ -57,11 +57,11 @@ Key CPI struct: \`light_token::instruction::CreateAssociatedAccountCpi\`
 
 ```text
 ---
-description: Add create-ATA CPI to an Anchor program
+description: Add create associated token account CPI to an Anchor program
 allowed-tools: Bash, Read, Write, Edit, Glob, Grep, WebFetch, AskUserQuestion, Task, TaskCreate, TaskGet, TaskList, TaskUpdate, TaskOutput, mcp__deepwiki, mcp__zkcompression
 ---
 
-## Add create-ATA CPI to an Anchor program
+## Add create associated token account CPI to an Anchor program
 
 Context:
 - Guide: https://zkcompression.com/light-token/cookbook/create-ata
@@ -74,17 +74,17 @@ Key CPI struct: `light_token::instruction::CreateAssociatedAccountCpi`
 ### 1. Index project
 - Grep `declare_id|#\[program\]|anchor_lang|Account<|Pubkey|invoke|ata|associated|owner|mint` across src/
 - Glob `**/*.rs` and `**/Cargo.toml` for project structure
-- Identify: program ID, existing instructions, account structs, ATA derivation
+- Identify: program ID, existing instructions, account structs, associated token account derivation
 - Read Cargo.toml — note existing dependencies and framework version
 - Task subagent (Grep/Read/WebFetch) if project has multiple crates to scan in parallel
 
 ### 2. Read references
-- WebFetch the guide above — review the CPI tab under Program: ATA creation with .rent_free() chain
+- WebFetch the guide above — review the CPI tab under Program: associated token account creation with .rent_free() chain
 - WebFetch skill.md — check for a dedicated skill and resources matching this task
 - TaskCreate one todo per phase below to track progress
 
 ### 3. Clarify intention
-- AskUserQuestion: what is the goal? (add create-ATA to existing program, new program from scratch, migrate from SPL create_associated_token_account)
+- AskUserQuestion: what is the goal? (add create associated token account to existing program, new program from scratch, migrate from SPL create_associated_token_account)
 - AskUserQuestion: should the payer be an external signer or a PDA? (determines invoke vs invoke_signed)
 - Summarize findings and wait for user confirmation before implementing
 

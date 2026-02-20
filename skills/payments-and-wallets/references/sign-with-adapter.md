@@ -85,7 +85,7 @@ await transact(async wallet => {
   const sourceAta = getAssociatedTokenAddressInterface(mint, ownerPubkey);
   const destinationAta = getAssociatedTokenAddressInterface(mint, recipient);
 
-  // Load source ATA if compressed
+  // Load source associated token account if compressed
   const loadIxs = await createLoadAtaInstructions(rpc, sourceAta, ownerPubkey, mint, ownerPubkey);
   const transferIx = createTransferInterfaceInstruction(sourceAta, destinationAta, ownerPubkey, amount);
 
@@ -133,7 +133,7 @@ const rpc = createRpc(RPC_URL);
 const sourceAta = getAssociatedTokenAddressInterface(mint, publicKey);
 const destinationAta = getAssociatedTokenAddressInterface(mint, recipient);
 
-// Load source ATA if compressed
+// Load source associated token account if compressed
 const loadIxs = await createLoadAtaInstructions(rpc, sourceAta, publicKey, mint, publicKey);
 const transferIx = createTransferInterfaceInstruction(sourceAta, destinationAta, publicKey, amount);
 
@@ -169,7 +169,7 @@ Source: `mobile-wallet-adapter/examples/example-web-app/components/LightTokenTra
 
 ## Loading compressed accounts
 
-When the source ATA may be compressed, prepend load instructions:
+When the source associated token account may be compressed, prepend load instructions:
 
 ```typescript
 const loadIxs = await createLoadAtaInstructions(rpc, sourceAta, owner, mint, payer);

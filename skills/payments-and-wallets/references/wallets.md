@@ -45,7 +45,7 @@ const rpc = createRpc(RPC_ENDPOINT);
 
 ## Receive tokens
 
-Load creates the ATA if needed and loads any compressed state into it. Share the ATA address with the sender.
+Load creates the associated token account if needed and loads any compressed state into it. Share the associated token account address with the sender.
 
 > **About loading**: Light tokens reduce account rent ~200x by auto-compressing inactive accounts. Before any action, the SDK detects compressed state and adds instructions to load it back on-chain. This almost always fits in a single atomic transaction. APIs return `TransactionInstruction[][]` so the same loop handles the rare multi-transaction case automatically.
 
@@ -125,7 +125,7 @@ import {
 
 const sourceAta = getAssociatedTokenAddressInterface(mint, owner.publicKey);
 
-// Handles loading, creates recipient ATA, transfers.
+// Handles loading, creates recipient associated token account, transfers.
 await transferInterface(rpc, payer, sourceAta, mint, recipient, owner, amount);
 ```
 

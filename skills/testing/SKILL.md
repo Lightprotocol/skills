@@ -52,10 +52,10 @@ See [references/accounts.md](references/accounts.md) for state trees, address tr
 
 See [references/addresses.md](references/addresses.md) for devnet-specific addresses and lookup tables.
 
-## Fetch for latest context
+## SDK references
 
-Fetch these URLs for the latest API surface and setup instructions:
-
-- https://docs.rs/light-program-test
-- https://www.npmjs.com/package/@lightprotocol/stateless.js
-- https://github.com/Lightprotocol/light-protocol
+| Package | Link |
+|---------|------|
+| `light-program-test` | [docs.rs](https://docs.rs/crate/light-program-test/latest) |
+| `@lightprotocol/stateless.js` | [API docs](https://lightprotocol.github.io/light-protocol/stateless.js/index.html) |
+| `light-client` | [docs.rs](https://docs.rs/light-client/latest/light_client/) |

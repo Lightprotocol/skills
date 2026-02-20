@@ -10,8 +10,8 @@ agent-skills/
 │   ├── token-distribution/
 │   ├── ask-mcp/
 │   ├── data-streaming/
-│   ├── defi-program/
-│   ├── defi-router/
+│   ├── light-sdk/
+│   ├── light-token-client/
 │   ├── solana-compression/
 │   ├── payments-and-wallets/
 │   ├── testing/
@@ -34,8 +34,8 @@ agent-skills/
 | token-distribution | Distribute SPL tokens with 5000x cheaper cost. For airdrops, DePIN, or token distribution. Can implement custom claim for advanced usage. |
 | ask-mcp | Query Light Protocol and related repositories via DeepWiki MCP. Use when answering questions about compressed accounts, Light SDK, Solana development, Claude Code features, or agent skills. |
 | data-streaming | Stream Light Protocol account state via Laserstream gRPC. Covers token accounts, mint accounts, and compressible PDAs with hot/cold lifecycle tracking. |
-| defi-program | Build rent-free DeFi programs on Solana. Anchor macros or Pinocchio patterns for AMMs, vaults, lending. Covers state structs, account creation, CPI, testing. |
-| defi-router | Integrate rent-free markets into routers and aggregators. Cold account detection, load instructions, Jito bundles. |
+| light-sdk | Build rent-free Solana programs with Light SDK. For DeFi (AMMs, vaults, lending), infrastructure, or any Solana program. Anchor macros or Pinocchio patterns. Covers state structs, account creation, CPI, client SDK, router integration, and testing. |
+| light-token-client | Use Light Token client SDKs (TypeScript and Rust). Cookbook for creating mints, associated token accounts, transfers, and more. |
 | solana-compression | Build compressed PDA programs on Solana with Light System Program CPI. Create, update, close, burn, reinitialize compressed accounts. Client integration and testing. |
 | payments-and-wallets | Build payment flows and wallet integrations with light-token. Covers receive/send/balance/history, sign with privy and wallet adapters, nullifier-based double-spend prevention. |
 | testing | Test Light Protocol programs and clients for localnet, devnet and mainnet. |

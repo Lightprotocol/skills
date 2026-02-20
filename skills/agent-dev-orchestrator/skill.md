@@ -34,7 +34,7 @@ Comparing creation cost and CU usage:
 | :----------------------- | --------------: | ---------: |
 | **Mint Account**         | **0.00001 SOL** | 0.0015 SOL |
 | **Token Account**        | **0.00001 SOL** |  0.002 SOL |
-| **ATA Creation**         |    **4,348 CU** |  14,194 CU |
+| **Associated token account creation** |    **4,348 CU** |  14,194 CU |
 | **Transfer**             |      **312 CU** |   4,645 CU |
 | **Transfer** (rent-free) |    **1,885 CU** |   4,645 CU |
 
@@ -67,10 +67,10 @@ npx skills add https://zkcompression.com
 
 | Use case                                                                                                                                                                                              | Skill                                                                                                 |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| Build DeFi programs (AMMs, vaults, lending) with Anchor or Pinocchio                                                                                                                                  | [defi-program](https://github.com/Lightprotocol/skills/tree/main/skills/defi-program)                 |
-| Integrate rent-free markets into routers and aggregators                                                                                                                                              | [defi-router](https://github.com/Lightprotocol/skills/tree/main/skills/defi-router)                   |
+| Build rent-free Solana programs with Light SDK (Anchor or Pinocchio). Includes router integration.                                                                                                    | [light-sdk](https://github.com/Lightprotocol/skills/tree/main/skills/light-sdk)                       |
+| Use Light Token client SDKs (TypeScript and Rust) for mints, associated token accounts, transfers                                                                                                                         | [light-token-client](https://github.com/Lightprotocol/skills/tree/main/skills/light-token-client)     |
 | Stream account state via Laserstream gRPC                                                                                                                                                             | [data-streaming](https://github.com/Lightprotocol/skills/tree/main/skills/data-streaming)             |
-| Wallets and payment flows with light-token. Includes privy, wallet adapter, mobile wallet adapter signing. Optional nullifier to prevent your onchain instruction from being executed more than once. | [payments-and-wallets](https://github.com/Lightprotocol/skills/tree/main/skills/payments-and-wallets) |
+| Build payment flows and wallet integrations with light-token. Covers receive/send/balance/history, sign with privy and wallet adapters, and nullifier-based double-spend prevention. | [payments-and-wallets](https://github.com/Lightprotocol/skills/tree/main/skills/payments-and-wallets) |
 | Airdrops, DePIN, token distribution                                                                                                                                                                   | [token-distribution](https://github.com/Lightprotocol/skills/tree/main/skills/token-distribution)     |
 | Anti-double-spend nullifiers for Privacy-preserving ZK programs                                                                                                                                       | [zk-nullifier](https://github.com/Lightprotocol/skills/tree/main/skills/zk-nullifier)                 |
 | Testing programs and clients on localnet, devnet, mainnet                                                                                                                                             | [testing](https://github.com/Lightprotocol/skills/tree/main/skills/testing)                           |
@@ -87,7 +87,7 @@ Add the marketplace and install:
 /plugin install solana-rent-free-dev
 ```
 
-All skills are included. Use them by name (`/defi-program`, `/token-distribution`, `/testing`, etc.) or let Claude invoke them based on task context.
+All skills are included. Use them by name (`/light-sdk`, `/token-distribution`, `/testing`, etc.) or let Claude invoke them based on task context.
 
 ### Install to Cursor
 

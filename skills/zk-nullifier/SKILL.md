@@ -287,4 +287,13 @@ let output_state_tree_index = rpc
     .pack_output_tree_index(&mut remaining_accounts)?;
 ```
 
+## SDK references
 
+| Package | Link |
+|---------|------|
+| `light-sdk` | [docs.rs](https://docs.rs/light-sdk/latest/light_sdk/) |
+| `@lightprotocol/stateless.js` | [API docs](https://lightprotocol.github.io/light-protocol/stateless.js/index.html) |
+| `light-client` | [docs.rs](https://docs.rs/light-client/latest/light_client/) |
+| `@lightprotocol/nullifier-program` | [npm](https://www.npmjs.com/package/@lightprotocol/nullifier-program) |
+| `light-nullifier-program` | [crates.io](https://crates.io/crates/light-nullifier-program) |
+| `light-program-test` | [docs.rs](https://docs.rs/crate/light-program-test/latest) |

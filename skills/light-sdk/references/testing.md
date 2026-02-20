@@ -99,7 +99,7 @@ async fn test_pool_lifecycle() {
 
     // 5. Load cold accounts
     let mut specs = sdk.load_specs(&cold).unwrap();
-    // Add user ATAs
+    // Add user associated token accounts
     let ata_a = rpc.get_associated_token_account_interface(&user.pubkey(), &mint_a, None)
         .await.unwrap().value.unwrap();
     let ata_b = rpc.get_associated_token_account_interface(&user.pubkey(), &mint_b, None)

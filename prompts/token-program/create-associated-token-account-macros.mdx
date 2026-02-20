@@ -1,10 +1,10 @@
-<Prompt description="Create a rent-free ATA with Anchor macros" actions={["copy", "cursor"]}>
+<Prompt description="Create a rent-free associated token account with Anchor macros" actions={["copy", "cursor"]}>
 {`---
-description: Create a rent-free ATA with Anchor macros
+description: Create a rent-free associated token account with Anchor macros
 allowed-tools: Bash, Read, Write, Edit, Glob, Grep, WebFetch, AskUserQuestion, Task, TaskCreate, TaskGet, TaskList, TaskUpdate, TaskOutput, mcp__deepwiki, mcp__zkcompression
 ---
 
-## Create a rent-free ATA with Anchor macros
+## Create a rent-free associated token account with Anchor macros
 
 Context:
 - Guide: https://zkcompression.com/light-token/cookbook/create-ata
@@ -17,7 +17,7 @@ Key macros: \`#[light_program]\`, \`LightAccounts\`, \`#[light_account(init, ass
 ### 1. Index project
 - Grep \`#\[program\]|anchor_lang|Account<|Accounts|seeds|init|payer|ata|associated\` across src/
 - Glob \`**/*.rs\` and \`**/Cargo.toml\` for project structure
-- Identify: existing program module, account structs, ATA patterns
+- Identify: existing program module, account structs, associated token account patterns
 - Read Cargo.toml — note existing dependencies and framework version
 - Task subagent (Grep/Read/WebFetch) if project has multiple crates to scan in parallel
 
@@ -27,7 +27,7 @@ Key macros: \`#[light_program]\`, \`LightAccounts\`, \`#[light_account(init, ass
 - TaskCreate one todo per phase below to track progress
 
 ### 3. Clarify intention
-- AskUserQuestion: what is the goal? (new program from scratch, add rent-free ATA to existing program, migrate from SPL create_associated_token_account)
+- AskUserQuestion: what is the goal? (new program from scratch, add rent-free associated token account to existing program, migrate from SPL create_associated_token_account)
 - Summarize findings and wait for user confirmation before implementing
 
 ### 4. Create plan
@@ -56,11 +56,11 @@ Key macros: \`#[light_program]\`, \`LightAccounts\`, \`#[light_account(init, ass
 
 ```text
 ---
-description: Create a rent-free ATA with Anchor macros
+description: Create a rent-free associated token account with Anchor macros
 allowed-tools: Bash, Read, Write, Edit, Glob, Grep, WebFetch, AskUserQuestion, Task, TaskCreate, TaskGet, TaskList, TaskUpdate, TaskOutput, mcp__deepwiki, mcp__zkcompression
 ---
 
-## Create a rent-free ATA with Anchor macros
+## Create a rent-free associated token account with Anchor macros
 
 Context:
 - Guide: https://zkcompression.com/light-token/cookbook/create-ata
@@ -73,7 +73,7 @@ Key macros: `#[light_program]`, `LightAccounts`, `#[light_account(init, associat
 ### 1. Index project
 - Grep `#\[program\]|anchor_lang|Account<|Accounts|seeds|init|payer|ata|associated` across src/
 - Glob `**/*.rs` and `**/Cargo.toml` for project structure
-- Identify: existing program module, account structs, ATA patterns
+- Identify: existing program module, account structs, associated token account patterns
 - Read Cargo.toml — note existing dependencies and framework version
 - Task subagent (Grep/Read/WebFetch) if project has multiple crates to scan in parallel
 
@@ -83,7 +83,7 @@ Key macros: `#[light_program]`, `LightAccounts`, `#[light_account(init, associat
 - TaskCreate one todo per phase below to track progress
 
 ### 3. Clarify intention
-- AskUserQuestion: what is the goal? (new program from scratch, add rent-free ATA to existing program, migrate from SPL create_associated_token_account)
+- AskUserQuestion: what is the goal? (new program from scratch, add rent-free associated token account to existing program, migrate from SPL create_associated_token_account)
 - Summarize findings and wait for user confirmation before implementing
 
 ### 4. Create plan
