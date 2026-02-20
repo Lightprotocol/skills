@@ -27,6 +27,7 @@ Comparing creation cost and CU usage:
 ## Skills and Prompts
 
 > Find dedicated [prompts for agents here](prompts).
+> If you're use case does not have a dedicated skill, start with the orchestrator.
 
 Install the orchestrator agent skill or view here: [skills/agent-dev-orchestrator](skills/agent-dev-orchestrator/):
 
