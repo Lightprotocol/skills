@@ -60,7 +60,7 @@ Add the marketplace and install:
 /plugin marketplace add Lightprotocol/skills
 ```
 
-All skills are included. Use them by name (`/light-sdk`, `/token-distribution`, `/testing`, etc.) or let Claude invoke them based on task context.
+All skills are included. Use them by name (`/light-sdk`, `/light-token-client`, `/testing`, etc.) or let Claude invoke them based on task context.
 
 ### Cursor
 
