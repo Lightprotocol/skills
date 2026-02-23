@@ -56,6 +56,7 @@ These skills work with any AI agent. We recommend [Claude Code](https://claude.a
 Add the marketplace and install:
 
 ```
+# install solana-rent-free-dev
 /plugin marketplace add Lightprotocol/skills
 ```
 
