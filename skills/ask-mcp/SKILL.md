@@ -1,11 +1,25 @@
 ---
 name: ask-mcp
-description: "For questions about compressed accounts, Light SDK, Solana development, Claude Code features, or agent skills. AI-powered answers grounded in repository context via DeepWiki MCP."
+description: "For questions about Light Protocol's SDK, smart contracts and Solana development, Claude Code features, or agent skills. AI-powered answers grounded in repository context via DeepWiki MCP."
 metadata:
+  source: https://github.com/Lightprotocol/skills
+  documentation: https://www.zkcompression.com
   openclaw:
     requires:
       env: []
-      bins: ["node", "solana", "anchor", "cargo", "light"]
+      bins: []
+allowed-tools:
+  - Read
+  - Glob
+  - Grep
+  - Task
+  - WebFetch(https://zkcompression.com/*)
+  - WebFetch(https://github.com/Lightprotocol/*)
+  - WebSearch
+  - mcp__deepwiki__read_wiki_structure
+  - mcp__deepwiki__read_wiki_contents
+  - mcp__deepwiki__ask_question
+  - mcp__zkcompression__SearchLightProtocol
 ---
 
 # DeepWiki Research
@@ -14,36 +28,31 @@ Query repositories via DeepWiki MCP to answer technical questions with precise, 
 
 ## Workflow
 
-1. **Clarify intent**
-   - Recommend plan mode, if it's not activated
-   - Use `AskUserQuestion` to resolve blind spots
-   - All questions must be resolved before execution
-2. **Identify references and skills**
-   - Match task to [execution steps](#execution-steps) below
-   - Locate relevant documentation and examples
-3. **Write plan file** (YAML task format)
-   - Use `AskUserQuestion` for anything unclear — never guess or assume
-   - Identify blockers: permissions, dependencies, unknowns
-   - Plan must be complete before execution begins
-4. **Execute**
-   - Use `Task` tool with subagents for parallel research
-   - Subagents load skills via `Skill` tool
-   - Track progress with `TodoWrite`
-5. **When stuck**: spawn subagent with `Read`, `Glob`, `Grep`, DeepWiki MCP access and load `skills/ask-mcp`
+1. **Understand the question**
+   - Identify what the user is asking and which domain it falls into
+   - If the question is ambiguous, state your understanding and ask for clarification
+2. **Gather context**
+   - Match question to the [execution steps](#execution-steps) below
+   - Use `Glob`, `Grep`, and `Read` to find relevant local files
+   - Query DeepWiki MCP (`mcp__deepwiki__ask_question`) and `mcp__zkcompression__SearchLightProtocol` for repository-level context
+   - Use `Task` subagents for parallel research across multiple repos when needed
+3. **Synthesize and respond**
+   - Apply [precision rules](#4-apply-precision-rules) to the answer
+   - Format per [format response](#5-format-response)
 
 ## Execution Steps
 
-### 1. Read Required Context in Local Repo
+### 1. Read required context in local repo
 
-Use `/init` skill and index current repository, if you have not already
+Use `Glob` and `Grep` to locate relevant files in the current repository. Use `Read` to pull in specific content needed to answer the question.
 
-### 2. Identify Question Scope
+### 2. Identify question scope
 
 Determine the domain:
 - Programs, client SDKs, architecture, implementation details
 - Specific components (LightAccount, ValidityProof, CPI, etc.)
 
-### 2. Fetch Repository Context
+### 3. Fetch repository context
 
 Select the appropriate repository based on question scope:
 
@@ -73,8 +82,9 @@ mcp__deepwiki__ask_question("anthropics/claude-code", "your question")
 mcp__deepwiki__read_wiki_structure("anthropics/skills")
 mcp__deepwiki__read_wiki_contents("anthropics/skills")
 mcp__deepwiki__ask_question("anthropics/skills", "your question")
+```
 
-### 3. Apply Precision Rules
+### 4. Apply precision rules
 
 **AVOID:**
 - Vague verbs: "handles", "manages", "processes", "enables", "provides"
@@ -96,7 +106,7 @@ mcp__deepwiki__ask_question("anthropics/skills", "your question")
 
 `Describe exactly what happens.`
 
-### 4. Format Response
+### 5. Format response
 
 Structure answers with:
 - Technical precision
@@ -154,6 +164,8 @@ Compressed accounts require client-generated cryptographic proof that address do
 This skill does not pull, store, or transmit external secrets. It provides code patterns, documentation references, and development guidance only.
 
 - **No credentials consumed.** The skill requires no API keys, private keys, or signing secrets. `env: []` is declared explicitly.
+- **DeepWiki MCP accesses public repositories only.** All `mcp__deepwiki__*` calls query public GitHub repositories (Lightprotocol/light-protocol, anthropics/claude-code, anthropics/skills). No authentication tokens are required or transmitted. DeepWiki does not access private repositories unless explicitly configured with a token — this skill does not configure one.
 - **User-provided configuration.** RPC endpoints, wallet keypairs, and authentication tokens (Privy, wallet adapters) are configured in the user's own application code — the skill only demonstrates how to use them.
+- **Tool boundary enforced.** The `allowed-tools` list restricts this skill to read-only operations (`Read`, `Glob`, `Grep`), research subagents (`Task`), web fetches to Light Protocol domains, and MCP queries. It cannot load other skills, write files, or execute shell commands. Verify the `allowed-tools` list in the frontmatter above matches these constraints.
 - **Install source.** `npx skills add Lightprotocol/skills` installs from the public GitHub repository ([Lightprotocol/skills](https://github.com/Lightprotocol/skills)). Verify the source before running.
 - **Audited protocol.** Light Protocol smart contracts are independently audited. Reports are published at [github.com/Lightprotocol/light-protocol/tree/main/audits](https://github.com/Lightprotocol/light-protocol/tree/main/audits).

@@ -1,6 +1,13 @@
 ---
 name: skill-check
 description: "For validating skill correctness, running evals, or verifying skills after edits. Tests routing accuracy, output quality, and adversarial security via Promptfoo eval suites."
+metadata:
+  source: https://github.com/Lightprotocol/skills
+  documentation: https://www.zkcompression.com
+  openclaw:
+    requires:
+      env: []
+      bins: ["node", "claude"]
 ---
 
 # Skill check
@@ -128,5 +135,6 @@ This skill does not pull, store, or transmit external secrets. It provides code 
 
 - **No credentials consumed.** The skill requires no API keys, private keys, or signing secrets. `env: []` is declared explicitly.
 - **User-provided configuration.** RPC endpoints, wallet keypairs, and authentication tokens (Privy, wallet adapters) are configured in the user's own application code — the skill only demonstrates how to use them.
+- **Subagent scope.** This skill may spawn read-only subagents that use `Read`, `Glob`, and `Grep` to search the local repository. Restrict the working directory to your project.
 - **Install source.** `npx skills add Lightprotocol/skills` installs from the public GitHub repository ([Lightprotocol/skills](https://github.com/Lightprotocol/skills)). Verify the source before running.
 - **Audited protocol.** Light Protocol smart contracts are independently audited. Reports are published at [github.com/Lightprotocol/light-protocol/tree/main/audits](https://github.com/Lightprotocol/light-protocol/tree/main/audits).

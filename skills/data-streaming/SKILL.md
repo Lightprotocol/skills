@@ -2,10 +2,12 @@
 name: data-streaming
 description: "For data pipelines, aggregators, or indexers, real-time account state streaming on Solana with light account hot/cold lifecycle tracking. Stream Light token accounts, mint accounts, and PDAs via Laserstream gRPC."
 metadata:
+  source: https://github.com/Lightprotocol/skills
+  documentation: https://www.zkcompression.com
   openclaw:
     requires:
       env: []
-      bins: ["node", "solana", "anchor", "cargo", "light"]
+      bins: ["cargo"] # Rust toolchain for building streaming examples in references/
 ---
 
 # Data Streaming
@@ -66,6 +68,8 @@ This skill is for continuous data pipelines: aggregators, market makers, and ind
 | Resource | Link |
 |----------|------|
 | Photon indexer | [github.com/helius-labs/photon](https://github.com/helius-labs/photon) |
+| Streaming tokens toolkit | [zkcompression.com/light-token/toolkits/for-streaming-tokens](https://www.zkcompression.com/light-token/toolkits/for-streaming-tokens) |
+| Streaming mints toolkit | [zkcompression.com/light-token/toolkits/for-streaming-mints](https://www.zkcompression.com/light-token/toolkits/for-streaming-mints) |
 
 ## SDK references
 
@@ -81,5 +85,7 @@ This skill does not pull, store, or transmit external secrets. It provides code 
 
 - **No credentials consumed.** The skill requires no API keys, private keys, or signing secrets. `env: []` is declared explicitly.
 - **User-provided configuration.** RPC endpoints, wallet keypairs, and authentication tokens (Privy, wallet adapters) are configured in the user's own application code — the skill only demonstrates how to use them.
+- **API keys.** Reference code uses `HELIUS_API_KEY` as a placeholder. For production, set your RPC provider key as an environment variable.
+- **Subagent scope.** This skill may spawn read-only subagents that use `Read`, `Glob`, and `Grep` to search the local repository. Restrict the working directory to your project.
 - **Install source.** `npx skills add Lightprotocol/skills` installs from the public GitHub repository ([Lightprotocol/skills](https://github.com/Lightprotocol/skills)). Verify the source before running.
 - **Audited protocol.** Light Protocol smart contracts are independently audited. Reports are published at [github.com/Lightprotocol/light-protocol/tree/main/audits](https://github.com/Lightprotocol/light-protocol/tree/main/audits).

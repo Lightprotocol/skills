@@ -2,15 +2,29 @@
 name: light-token-client
 description: "For client development with tokens on Solana, Light Token is 200x cheaper than SPL and has minimal changes. Skill includes guides for create mints, associated token accounts, transfer, approve, burn, wrap, and more. @lightprotocol/compressed-token (TypeScript) and light_token_client (Rust)."
 metadata:
+  source: https://github.com/Lightprotocol/skills
+  documentation: https://www.zkcompression.com
   openclaw:
     requires:
-      env: []
-      bins: ["node", "solana", "anchor", "cargo", "light"]
+      env: ["API_KEY"]  # Helius or Triton RPC key; only needed for devnet/mainnet
+      config: ["~/.config/solana/id.json"]  # Solana keypair; only needed for devnet/mainnet
+      bins: ["node", "cargo"] # node for TS SDK, cargo for Rust SDK examples
 ---
 
 # Light Token Client SDKs
 
 Client-side cookbook for `@lightprotocol/compressed-token` (TypeScript) and `light_token_client` (Rust). Covers all token operations: create mints, associated token accounts, transfer, approve, revoke, burn, wrap, unwrap, freeze, thaw, close, and load.
+
+| Creation cost     | SPL                 | Light Token          |
+| :---------------- | :------------------ | :------------------- |
+| **Token account** | ~2,000,000 lamports | ~**11,000** lamports |
+
+## Prerequisites
+
+Examples show both localnet and devnet configurations. For devnet, set:
+
+- `API_KEY` env var — Helius or Triton RPC API key. In production, load from a secrets manager.
+- `~/.config/solana/id.json` — local Solana keypair (`solana-keygen new`). In production, load from a secrets manager.
 
 ## Workflow
 
@@ -29,7 +43,7 @@ Client-side cookbook for `@lightprotocol/compressed-token` (TypeScript) and `lig
    - Use `Task` tool with subagents for parallel research
    - Subagents load skills via `Skill` tool
    - Track progress with `TodoWrite`
-5. **When stuck**: spawn subagent with `Read`, `Glob`, `Grep`, DeepWiki MCP access and load `skills/ask-mcp`
+5. **When stuck**: ask to spawn a read-only subagent with `Read`, `Glob`, `Grep`, and DeepWiki MCP access, loading `skills/ask-mcp`. Scope reads to skill references, example repos, and docs.
 
 ## Domain references
 
@@ -78,15 +92,6 @@ Client-side cookbook for `@lightprotocol/compressed-token` (TypeScript) and `lig
 | Thaw | — | `Thaw` | [freeze-thaw](https://zkcompression.com/light-token/cookbook/freeze-thaw) |
 | Close | — | `Close` | [close-token-account](https://zkcompression.com/light-token/cookbook/close-token-account) |
 
-## When to use TypeScript vs Rust
-
-| Criteria | TypeScript | Rust |
-|----------|-----------|------|
-| Environment | Browser, Node.js, Deno | Server-side, CLI tools, on-chain tests |
-| Package | `@lightprotocol/compressed-token` + `@lightprotocol/stateless.js` | `light_token_client` |
-| Pattern | `await action(rpc, payer, ...)` | `Action::new(...).execute(&mut rpc, &payer).await` |
-| Freeze/Thaw/Close/Burn | Not yet in TS SDK | Available |
-
 ## External references
 
 | Resource | Link |
@@ -105,7 +110,8 @@ Client-side cookbook for `@lightprotocol/compressed-token` (TypeScript) and `lig
 
 This skill does not pull, store, or transmit external secrets. It provides code patterns, documentation references, and development guidance only.
 
-- **No credentials consumed.** The skill requires no API keys, private keys, or signing secrets. `env: []` is declared explicitly.
-- **User-provided configuration.** RPC endpoints, wallet keypairs, and authentication tokens (Privy, wallet adapters) are configured in the user's own application code — the skill only demonstrates how to use them.
+- **Declared dependencies.** Devnet and mainnet examples require `API_KEY` (Helius or Triton RPC key) and read `~/.config/solana/id.json` for the payer keypair. Neither is needed on localnet. In production, load both from a secrets manager.
+- **User-provided configuration.** RPC endpoints, wallet keypairs, and authentication tokens are configured in the user's application code. The skill demonstrates patterns — it does not store or transmit secrets.
 - **Install source.** `npx skills add Lightprotocol/skills` installs from the public GitHub repository ([Lightprotocol/skills](https://github.com/Lightprotocol/skills)). Verify the source before running.
+- **Subagent scope.** When stuck, the skill asks to spawn a read-only subagent with `Read`, `Glob`, and `Grep` scoped to skill references, example repos, and docs.
 - **Audited protocol.** Light Protocol smart contracts are independently audited. Reports are published at [github.com/Lightprotocol/light-protocol/tree/main/audits](https://github.com/Lightprotocol/light-protocol/tree/main/audits).

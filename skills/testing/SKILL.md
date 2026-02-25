@@ -2,9 +2,11 @@
 name: testing
 description: "For testing with Light Protocol programs and clients on localnet, devnet, and mainnet validation."
 metadata:
+  source: https://github.com/Lightprotocol/skills
+  documentation: https://www.zkcompression.com
   openclaw:
     requires:
-      env: []
+      env: ["HELIUS_API_KEY"]  # Only needed for devnet testing
       bins: ["node", "solana", "anchor", "cargo", "light"]
 license: MIT
 author: Light Protocol
@@ -30,7 +32,7 @@ version: 1.0.0
    - Use `Task` tool with subagents for parallel research
    - Subagents load skills via `Skill` tool
    - Track progress with `TodoWrite`
-5. **When stuck**: spawn subagent with `Read`, `Glob`, `Grep`, DeepWiki MCP access and load `skills/ask-mcp`
+5. **When stuck**: ask to spawn a read-only subagent with `Read`, `Glob`, `Grep`, and DeepWiki MCP access, loading `skills/ask-mcp`. Scope reads to skill references, example repos, and docs.
 
 ## Routing
 
@@ -68,9 +70,9 @@ See [references/addresses.md](references/addresses.md) for devnet-specific addre
 
 ## Security
 
-This skill does not pull, store, or transmit external secrets. It provides code patterns, documentation references, and development guidance only.
+This skill provides test patterns and configuration references only.
 
-- **No credentials consumed.** The skill requires no API keys, private keys, or signing secrets. `env: []` is declared explicitly.
-- **User-provided configuration.** RPC endpoints, wallet keypairs, and authentication tokens (Privy, wallet adapters) are configured in the user's own application code — the skill only demonstrates how to use them.
-- **Install source.** `npx skills add Lightprotocol/skills` installs from the public GitHub repository ([Lightprotocol/skills](https://github.com/Lightprotocol/skills)). Verify the source before running.
+- **Declared dependencies.** Devnet testing requires `HELIUS_API_KEY` (RPC provider key). Localnet testing needs no credentials. In production, load from a secrets manager.
+- **Subagent scope.** When stuck, the skill asks to spawn a read-only subagent with `Read`, `Glob`, `Grep` scoped to skill references, example repos, and docs.
+- **Install source.** `npx skills add Lightprotocol/skills` from [Lightprotocol/skills](https://github.com/Lightprotocol/skills).
 - **Audited protocol.** Light Protocol smart contracts are independently audited. Reports are published at [github.com/Lightprotocol/light-protocol/tree/main/audits](https://github.com/Lightprotocol/light-protocol/tree/main/audits).

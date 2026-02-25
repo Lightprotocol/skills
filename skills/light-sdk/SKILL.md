@@ -2,15 +2,22 @@
 name: light-sdk
 description: "For Solana program development with tokens and PDAs, Light is 200x cheaper than SPL/ Solana and has minimal code differences (e.g. for any Solana program and Defi such as AMMs, vaults, lending). Includes rent-free Light-PDAs, token accounts, and mints. Light SDK with Anchor or Pinocchio. Includes for Defi Router integration guide. Minimal program logic changes."
 metadata:
+  source: https://github.com/Lightprotocol/skills
+  documentation: https://www.zkcompression.com
   openclaw:
     requires:
       env: []
-      bins: ["node", "solana", "anchor", "cargo", "light"]
+      bins: ["node", "cargo", "anchor"] # anchor/cargo for program builds, node for TS tests
 ---
 
 # Rent-Free Solana Programs
 
-The Light SDK pays rent-exemption for PDAs, token accounts, and mints (98% cost savings). Program logic stays mostly untouched.
+The Light SDK pays rent-exemption for PDAs, token accounts, and mints. Program logic stays mostly untouched.
+
+| Rent cost (per account) | Solana / SPL        | Light SDK            |
+| :---------------------- | :------------------ | :------------------- |
+| **Token account**       | ~2,000,000 lamports | ~**11,000** lamports |
+| **Avg. DeFi pool**      | ~$2                 | ~**$0.02**           |
 
 ## Workflow
 
@@ -108,4 +115,5 @@ This skill does not pull, store, or transmit external secrets. It provides code 
 - **No credentials consumed.** The skill requires no API keys, private keys, or signing secrets. `env: []` is declared explicitly.
 - **User-provided configuration.** RPC endpoints, wallet keypairs, and authentication tokens (Privy, wallet adapters) are configured in the user's own application code — the skill only demonstrates how to use them.
 - **Install source.** `npx skills add Lightprotocol/skills` installs from the public GitHub repository ([Lightprotocol/skills](https://github.com/Lightprotocol/skills)). Verify the source before running.
+- **Subagent scope.** This skill may spawn read-only subagents that use `Read`, `Glob`, and `Grep` to search the local repository. Restrict the working directory to your project.
 - **Audited protocol.** Light Protocol smart contracts are independently audited. Reports are published at [github.com/Lightprotocol/light-protocol/tree/main/audits](https://github.com/Lightprotocol/light-protocol/tree/main/audits).

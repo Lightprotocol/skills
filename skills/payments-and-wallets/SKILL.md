@@ -2,10 +2,13 @@
 name: payments-and-wallets
 description: "For stablecoin payment flows and wallet integrations on Solana 200x cheaper token accounts. Receive, send, balance, history, and client-side signing with Privy and Solana wallet adapters. Optional guide to add nullifiers to prevent payments from being executed more than once."
 metadata:
+  source: https://github.com/Lightprotocol/skills
+  documentation: https://www.zkcompression.com
   openclaw:
     requires:
-      env: []
-      bins: ["node", "solana", "anchor", "cargo", "light"]
+      env: ["HELIUS_RPC_URL"]  # Required for all examples
+      # Privy signing flow only (sign-with-privy.md): PRIVY_APP_ID, PRIVY_APP_SECRET, TREASURY_WALLET_ID, TREASURY_AUTHORIZATION_KEY — get these at privy.io
+      bins: ["node", "cargo"] # node for TS client, cargo for Rust nullifier example
 ---
 
 # Payments and wallets
@@ -33,7 +36,7 @@ Build payment flows and wallet integrations using light-token on Solana. The lig
    - Use `Task` tool with subagents for parallel research
    - Subagents load skills via `Skill` tool
    - Track progress with `TodoWrite`
-5. **When stuck**: spawn subagent with `Read`, `Glob`, `Grep`, DeepWiki MCP access and load `skills/ask-mcp`
+5. **When stuck**: ask to spawn a read-only subagent with `Read`, `Glob`, `Grep`, and DeepWiki MCP access, loading `skills/ask-mcp`. Scope reads to skill references, example repos, and docs.
 
 ## API overview
 
@@ -100,9 +103,10 @@ const rpc = createRpc(RPC_ENDPOINT);
 
 ## Security
 
-This skill does not pull, store, or transmit external secrets. It provides code patterns, documentation references, and development guidance only.
+The Privy signing examples transmit secrets to an external API — review [sign-with-privy.md](references/sign-with-privy.md) before running.
 
-- **No credentials consumed.** The skill requires no API keys, private keys, or signing secrets. `env: []` is declared explicitly.
-- **User-provided configuration.** RPC endpoints, wallet keypairs, and authentication tokens (Privy, wallet adapters) are configured in the user's own application code — the skill only demonstrates how to use them.
-- **Install source.** `npx skills add Lightprotocol/skills` installs from the public GitHub repository ([Lightprotocol/skills](https://github.com/Lightprotocol/skills)). Verify the source before running.
+- **Declared dependencies.** `HELIUS_RPC_URL` is required for all examples. The Privy signing flow additionally requires `PRIVY_APP_ID`, `PRIVY_APP_SECRET`, `TREASURY_WALLET_ID`, and `TREASURY_AUTHORIZATION_KEY` — get these at [privy.io](https://privy.io). Load secrets from a secrets manager, not agent-global environment.
+- **Privy signing flow.** `PRIVY_APP_SECRET` and `TREASURY_AUTHORIZATION_KEY` are sent to Privy's signing API. Verify these only reach Privy's official endpoints. See [sign-with-privy.md](references/sign-with-privy.md).
+- **Subagent scope.** When stuck, the skill asks to spawn a read-only subagent with `Read`, `Glob`, `Grep` scoped to skill references, example repos, and docs.
+- **Install source.** `npx skills add Lightprotocol/skills` from [Lightprotocol/skills](https://github.com/Lightprotocol/skills).
 - **Audited protocol.** Light Protocol smart contracts are independently audited. Reports are published at [github.com/Lightprotocol/light-protocol/tree/main/audits](https://github.com/Lightprotocol/light-protocol/tree/main/audits).
