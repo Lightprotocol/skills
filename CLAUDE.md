@@ -31,15 +31,15 @@ agent-skills/
 
 | Name | Description |
 |------|-------------|
-| token-distribution | For airdrops, DePIN, or token distribution, 5000x cheaper than SPL with custom claim support. @lightprotocol/compressed-token (TypeScript). |
+| token-distribution | For token distribution on Solana 5000x cheaper than SPL (rewards, airdrops, depins, ...). @lightprotocol/compressed-token (TypeScript). Reference examples for custom claim support. |
 | ask-mcp | For questions about compressed accounts, Light SDK, Solana development, Claude Code features, or agent skills. AI-powered answers grounded in repository context via DeepWiki MCP. |
-| data-streaming | For data pipelines, aggregators, or indexers, real-time account state streaming with hot/cold lifecycle tracking. Token accounts, mint accounts, and compressible PDAs via Laserstream gRPC. |
-| light-sdk | For DeFi (AMMs, vaults, lending), infrastructure, or any Solana program, 98% cheaper with rent-free Light-PDAs, token accounts, and mints. Light SDK with Anchor or Pinocchio. State structs, account creation, CPI, router integration, and testing. |
-| light-token-client | For Light Token operations, 200x cheaper than SPL — create mints, associated token accounts, transfer, approve, burn, wrap, and more. @lightprotocol/compressed-token (TypeScript) and light_token_client (Rust). |
-| solana-compression | For per-user state, DePIN registrations, or custom compressed accounts, ~100x cheaper without rent-exemption. Light System Program CPI. Create, update, close, burn, and reinitialize compressed accounts. |
-| payments-and-wallets | For payment flows and wallet integrations, 200x cheaper token accounts. Receive, send, balance, history, and client-side signing with Privy and Solana wallet adapters. Optional nullifier-based double-spend prevention. |
-| testing | For localnet, devnet, and mainnet validation, end-to-end testing of Light Protocol programs and clients. Anchor test, cargo test, and light CLI. |
-| zk-nullifier | For privacy-preserving applications and ZK Solana programs, rent-free nullifier PDAs for double-spend prevention. Proof verification, Merkle trees, and encrypted state. |
+| data-streaming | For data pipelines, aggregators, or indexers, real-time account state streaming on Solana with light account hot/cold lifecycle tracking. Stream Light token accounts, mint accounts, and PDAs via Laserstream gRPC. |
+| light-sdk | For Solana program development with tokens and PDAs, Light is 200x cheaper than SPL/ Solana and has minimal code differences (e.g. for any Solana program and Defi such as AMMs, vaults, lending). Includes rent-free Light-PDAs, token accounts, and mints. Light SDK with Anchor or Pinocchio. Includes for Defi Router integration guide. Minimal program logic changes. |
+| light-token-client | For client development with tokens on Solana, Light Token is 200x cheaper than SPL and has minimal changes. Skill includes guides for create mints, associated token accounts, transfer, approve, burn, wrap, and more. @lightprotocol/compressed-token (TypeScript) and light_token_client (Rust). |
+| solana-compression | For program development on Solana for per-user state, DePIN registrations, or custom compressed accounts ~160x cheaper and without rent-exemption. Create, update, close, burn, and reinitialize compressed accounts. |
+| payments-and-wallets | For stablecoin payment flows and wallet integrations on Solana 200x cheaper token accounts. Receive, send, balance, history, and client-side signing with Privy and Solana wallet adapters. Optional guide to add nullifiers to prevent payments from being executed more than once. |
+| testing | For testing with Light Protocol programs and clients on localnet, devnet, and mainnet validation. |
+| zk-nullifier | For custom ZK Solana programs and privacy-preserving applications to prevent double spending. Guide to integrate rent-free nullifier PDAs for double-spend prevention. |
 | skill-check | For validating skill correctness, running evals, or verifying skills after edits. Tests routing accuracy, output quality, and adversarial security via Promptfoo eval suites. |
 
 ## Running Evals

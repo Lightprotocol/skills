@@ -37,14 +37,14 @@ npx skills add Lightprotocol/skills
 
 | Use case                                                                                                                                                                                              | Skill                                                |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
-| For DeFi (AMMs, vaults, lending), infrastructure, or any Solana program, 98% cheaper with rent-free Light-PDAs, token accounts, and mints | [light-sdk](skills/light-sdk/)                       |
-| For Light Token operations, 200x cheaper than SPL — create mints, associated token accounts, transfer, approve, burn, wrap, and more | [light-token-client](skills/light-token-client/)     |
-| For data pipelines, aggregators, or indexers, real-time account state streaming with hot/cold lifecycle tracking | [data-streaming](skills/data-streaming/)             |
-| For payment flows and wallet integrations, 200x cheaper token accounts | [payments-and-wallets](skills/payments-and-wallets/) |
-| For airdrops, DePIN, or token distribution, 5000x cheaper than SPL with custom claim support | [token-distribution](skills/token-distribution/)     |
-| For privacy-preserving applications and ZK Solana programs, rent-free nullifier PDAs for double-spend prevention | [zk-nullifier](skills/zk-nullifier/)                 |
-| For per-user state, DePIN registrations, or custom compressed accounts, ~100x cheaper without rent-exemption | [solana-compression](skills/solana-compression/)     |
-| For localnet, devnet, and mainnet validation, end-to-end testing of Light Protocol programs and clients | [testing](skills/testing/)                           |
+| For Solana program development with tokens and PDAs, Light is 200x cheaper than SPL/ Solana and has minimal code differences | [light-sdk](skills/light-sdk/)                       |
+| For client development with tokens on Solana, Light Token is 200x cheaper than SPL and has minimal changes | [light-token-client](skills/light-token-client/)     |
+| For data pipelines, aggregators, or indexers, real-time account state streaming on Solana with light account hot/cold lifecycle tracking | [data-streaming](skills/data-streaming/)             |
+| For stablecoin payment flows and wallet integrations on Solana 200x cheaper token accounts | [payments-and-wallets](skills/payments-and-wallets/) |
+| For token distribution on Solana 5000x cheaper than SPL (rewards, airdrops, depins, ...) | [token-distribution](skills/token-distribution/)     |
+| For custom ZK Solana programs and privacy-preserving applications to prevent double spending | [zk-nullifier](skills/zk-nullifier/)                 |
+| For program development on Solana for per-user state, DePIN registrations, or custom compressed accounts ~160x cheaper | [solana-compression](skills/solana-compression/)     |
+| For testing with Light Protocol programs and clients on localnet, devnet, and mainnet validation | [testing](skills/testing/)                           |
 | For questions about compressed accounts, Light SDK, Solana development, Claude Code features, or agent skills | [ask-mcp](skills/ask-mcp/)                           |
 
 ## Installation
