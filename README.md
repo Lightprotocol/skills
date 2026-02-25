@@ -32,7 +32,7 @@ If you're use case does not have a dedicated skill, start with the orchestrator:
 
 ```bash
 # installs orchestrator skill
-npx skills add https://zkcompression.com
+npx skills add Lightprotocol/skills
 ```
 
 | Use case                                                                                                                                                                                              | Skill                                                |
@@ -40,7 +40,7 @@ npx skills add https://zkcompression.com
 | Build rent-free Solana programs with Light SDK (Anchor or Pinocchio) for Defi and more. Includes router integration.                                                                                                    | [light-sdk](skills/light-sdk/)                       |
 | Use Light Token client SDKs (TypeScript and Rust) for mints, associated token accounts, transfers                                                                                                                                            | [light-token-client](skills/light-token-client/)     |
 | Stream account state via Laserstream gRPC                                                                                                                                                             | [data-streaming](skills/data-streaming/)             |
-| Build payment flows and wallet integrations with light-token. Covers receive/send/balance/history, sign with privy and wallet adapters, and nullifier-based double-spend prevention. | [payments-and-wallets](skills/payments-and-wallets/) |
+| Build payment flows and wallet integrations with light-token. Covers receive/send/balance/history, client-side signing patterns for Privy and Solana wallet adapters, and nullifier-based double-spend prevention. | [payments-and-wallets](skills/payments-and-wallets/) |
 | Airdrops, DePIN, token distribution                                                                                                                                                                   | [token-distribution](skills/token-distribution/)     |
 | Anti-double-spend nullifiers for Privacy-preserving ZK programs                                                                                                                                       | [zk-nullifier](skills/zk-nullifier/)                 |
 | For per-user state, DePIN nodes, and infrequently accessed app state with compressed PDAs                                                                                                     | [solana-compression](skills/solana-compression/)     |
@@ -61,6 +61,22 @@ Add the marketplace and install:
 ```
 
 All skills are included. Use them by name (`/light-sdk`, `/light-token-client`, `/testing`, etc.) or let Claude invoke them based on task context.
+
+### OpenClaw
+
+Install as a plugin (all 9 skills):
+
+```bash
+openclaw plugins install ./path/to/skills
+```
+
+Or install individual skills from [ClawHub](https://clawhub.ai/tilo-14/solana-rent-free-dev):
+
+```bash
+clawhub install solana-rent-free-dev
+```
+
+The plugin manifest is defined in [`openclaw.plugin.json`](openclaw.plugin.json).
 
 ### Cursor
 

@@ -1,6 +1,11 @@
 ---
 name: payments-and-wallets
-description: "Build payment flows and wallet integrations with light-token. Covers receive/send/balance/history, sign with privy and wallet adapters, and nullifier-based double-spend prevention."
+description: "Build payment flows and wallet integrations with light-token. Covers receive/send/balance/history, client-side signing patterns for Privy and Solana wallet adapters, and nullifier-based double-spend prevention."
+metadata:
+  openclaw:
+    requires:
+      env: []
+      bins: ["node", "solana", "anchor", "cargo", "light"]
 ---
 
 # Payments and wallets

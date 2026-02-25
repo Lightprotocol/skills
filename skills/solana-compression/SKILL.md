@@ -1,6 +1,11 @@
 ---
 name: solana-compression
 description: "Build compressed PDA programs on Solana with Light System Program CPI. Create, update, close, burn, reinitialize compressed accounts. Client integration and testing."
+metadata:
+  openclaw:
+    requires:
+      env: []
+      bins: ["node", "solana", "anchor", "cargo", "light"]
 allowed-tools: Bash(git:*), Bash(cargo:*), Bash(anchor:*), Bash(light:*), Read, Edit, Glob, Grep, Write, Task, WebFetch, WebSearch, mcp__deepwiki__ask_question, mcp__claude-code-docs__SearchClaudeCodeDocs
 ---
 

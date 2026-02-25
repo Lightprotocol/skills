@@ -1,6 +1,11 @@
 ---
 name: ask-mcp
 description: Query Light Protocol and related repositories via DeepWiki MCP. Use when answering questions about compressed accounts, Light SDK, Solana development, Claude Code features, or agent skills. Triggers on technical questions requiring repository context.
+metadata:
+  openclaw:
+    requires:
+      env: []
+      bins: ["node", "solana", "anchor", "cargo", "light"]
 ---
 
 # DeepWiki Research

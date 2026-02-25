@@ -1,6 +1,11 @@
 ---
 name: light-sdk
 description: "Build rent-free Solana programs with Light SDK. For DeFi (AMMs, vaults, lending), infrastructure, or any Solana program. Anchor macros or Pinocchio patterns. Covers state structs, account creation, CPI, client SDK, router integration, and testing."
+metadata:
+  openclaw:
+    requires:
+      env: []
+      bins: ["node", "solana", "anchor", "cargo", "light"]
 ---
 
 # Rent-Free Solana Programs

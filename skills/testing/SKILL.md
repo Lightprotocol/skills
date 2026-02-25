@@ -1,6 +1,11 @@
 ---
 name: testing
 description: "Test Light Protocol programs and clients for localnet, devnet and mainnet"
+metadata:
+  openclaw:
+    requires:
+      env: []
+      bins: ["node", "solana", "anchor", "cargo", "light"]
 license: MIT
 author: Light Protocol
 version: 1.0.0

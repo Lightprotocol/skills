@@ -1,6 +1,11 @@
 ---
 name: token-distribution
 description: "Distribute SPL tokens with 5000x cheaper cost. For Airdrops, Depins, or Token Distribution. Can implement custom claim for advanced usage."
+metadata:
+  openclaw:
+    requires:
+      env: []
+      bins: ["node", "solana", "anchor", "cargo", "light"]
 ---
 
 # Airdrop

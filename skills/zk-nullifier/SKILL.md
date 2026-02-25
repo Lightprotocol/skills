@@ -1,6 +1,11 @@
 ---
 name: zk-nullifier
 description: "Use for privacy preserving applications and ZK Solana programs. Prevents double spending using rent-free PDAs."
+metadata:
+  openclaw:
+    requires:
+      env: []
+      bins: ["node", "solana", "anchor", "cargo", "light"]
 ---
 # ZK Nullifiers
 

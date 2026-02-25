@@ -1,6 +1,11 @@
 ---
 name: light-token-client
 description: "Use Light Token client SDKs (TypeScript and Rust) to create mints, associated token accounts, transfer, approve, burn, wrap, and more. Cookbook for @lightprotocol/compressed-token and light_token_client."
+metadata:
+  openclaw:
+    requires:
+      env: []
+      bins: ["node", "solana", "anchor", "cargo", "light"]
 ---
 
 # Light Token Client SDKs

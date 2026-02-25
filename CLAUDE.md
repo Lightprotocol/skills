@@ -37,7 +37,7 @@ agent-skills/
 | light-sdk | Build rent-free Solana programs with Light SDK. For DeFi (AMMs, vaults, lending), infrastructure, or any Solana program. Anchor macros or Pinocchio patterns. Covers state structs, account creation, CPI, client SDK, router integration, and testing. |
 | light-token-client | Use Light Token client SDKs (TypeScript and Rust). Cookbook for creating mints, associated token accounts, transfers, and more. |
 | solana-compression | Build compressed PDA programs on Solana with Light System Program CPI. Create, update, close, burn, reinitialize compressed accounts. Client integration and testing. |
-| payments-and-wallets | Build payment flows and wallet integrations with light-token. Covers receive/send/balance/history, sign with privy and wallet adapters, nullifier-based double-spend prevention. |
+| payments-and-wallets | Build payment flows and wallet integrations with light-token. Covers receive/send/balance/history, client-side signing patterns for Privy and Solana wallet adapters, nullifier-based double-spend prevention. |
 | testing | Test Light Protocol programs and clients for localnet, devnet and mainnet. |
 | zk-nullifier | Use for privacy preserving applications and ZK Solana programs. Prevents double spending using rent-free PDAs. |
 | skill-check | Run promptfoo eval suites against Light Protocol agent-skills. Tests routing accuracy, output quality, and adversarial security. |
