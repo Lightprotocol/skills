@@ -148,3 +148,12 @@ pub struct InstructionData {
 Compressed accounts require client-generated cryptographic proof that address doesn't exist (unlike regular Solana where runtime checks PDA existence). Address trees enforce uniqueness; state trees store account hashes.
 
 **Packed structs** use `u8` indices to reference accounts in `remaining_accounts`, reducing transaction size.
+
+## Security
+
+This skill does not pull, store, or transmit external secrets. It provides code patterns, documentation references, and development guidance only.
+
+- **No credentials consumed.** The skill requires no API keys, private keys, or signing secrets. `env: []` is declared explicitly.
+- **User-provided configuration.** RPC endpoints, wallet keypairs, and authentication tokens (Privy, wallet adapters) are configured in the user's own application code — the skill only demonstrates how to use them.
+- **Install source.** `npx skills add Lightprotocol/skills` installs from the public GitHub repository ([Lightprotocol/skills](https://github.com/Lightprotocol/skills)). Verify the source before running.
+- **Audited protocol.** Light Protocol smart contracts are independently audited. Reports are published at [github.com/Lightprotocol/light-protocol/tree/main/audits](https://github.com/Lightprotocol/light-protocol/tree/main/audits).

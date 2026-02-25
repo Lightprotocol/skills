@@ -73,3 +73,13 @@ This skill is for continuous data pipelines: aggregators, market makers, and ind
 |---------|------|
 | `@lightprotocol/stateless.js` | [API docs](https://lightprotocol.github.io/light-protocol/stateless.js/index.html) |
 | `light-client` | [docs.rs](https://docs.rs/light-client/latest/light_client/) |
+
+
+## Security
+
+This skill does not pull, store, or transmit external secrets. It provides code patterns, documentation references, and development guidance only.
+
+- **No credentials consumed.** The skill requires no API keys, private keys, or signing secrets. `env: []` is declared explicitly.
+- **User-provided configuration.** RPC endpoints, wallet keypairs, and authentication tokens (Privy, wallet adapters) are configured in the user's own application code — the skill only demonstrates how to use them.
+- **Install source.** `npx skills add Lightprotocol/skills` installs from the public GitHub repository ([Lightprotocol/skills](https://github.com/Lightprotocol/skills)). Verify the source before running.
+- **Audited protocol.** Light Protocol smart contracts are independently audited. Reports are published at [github.com/Lightprotocol/light-protocol/tree/main/audits](https://github.com/Lightprotocol/light-protocol/tree/main/audits).

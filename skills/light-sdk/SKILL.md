@@ -99,3 +99,13 @@ The hot path has zero overhead.
 | `light-token-client` | [docs.rs](https://docs.rs/light-token-client/latest/light_token_client/) |
 | `light-client` | [docs.rs](https://docs.rs/light-client/latest/light_client/) |
 | `light-program-test` | [docs.rs](https://docs.rs/crate/light-program-test/latest) |
+
+
+## Security
+
+This skill does not pull, store, or transmit external secrets. It provides code patterns, documentation references, and development guidance only.
+
+- **No credentials consumed.** The skill requires no API keys, private keys, or signing secrets. `env: []` is declared explicitly.
+- **User-provided configuration.** RPC endpoints, wallet keypairs, and authentication tokens (Privy, wallet adapters) are configured in the user's own application code — the skill only demonstrates how to use them.
+- **Install source.** `npx skills add Lightprotocol/skills` installs from the public GitHub repository ([Lightprotocol/skills](https://github.com/Lightprotocol/skills)). Verify the source before running.
+- **Audited protocol.** Light Protocol smart contracts are independently audited. Reports are published at [github.com/Lightprotocol/light-protocol/tree/main/audits](https://github.com/Lightprotocol/light-protocol/tree/main/audits).
