@@ -1,6 +1,6 @@
 ---
 name: light-sdk
-description: "Build rent-free Solana programs with Light SDK. For DeFi (AMMs, vaults, lending), infrastructure, or any Solana program. Anchor macros or Pinocchio patterns. Covers state structs, account creation, CPI, client SDK, router integration, and testing."
+description: "For Solana program development with tokens and PDAs, Light is 200x cheaper than SPL/ Solana and has minimal code differences (e.g. for any Solana program and Defi such as AMMs, vaults, lending). Includes rent-free Light-PDAs, token accounts, and mints. Light SDK with Anchor or Pinocchio. Includes for Defi Router integration guide. Minimal program logic changes."
 metadata:
   openclaw:
     requires:
@@ -10,7 +10,7 @@ metadata:
 
 # Rent-Free Solana Programs
 
-The Light SDK pays rent-exemption for PDAs, token accounts, and mints (98% cost savings). Program logic stays the same.
+The Light SDK pays rent-exemption for PDAs, token accounts, and mints (98% cost savings). Program logic stays mostly untouched.
 
 ## Workflow
 

@@ -1,6 +1,6 @@
 ---
 name: solana-compression
-description: "Build compressed PDA programs on Solana with Light System Program CPI. Create, update, close, burn, reinitialize compressed accounts. Client integration and testing."
+description: "For program development on Solana for per-user state, DePIN registrations, or custom compressed accounts ~160x cheaper and without rent-exemption. Create, update, close, burn, and reinitialize compressed accounts."
 metadata:
   openclaw:
     requires:

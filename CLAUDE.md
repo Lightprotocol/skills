@@ -31,16 +31,16 @@ agent-skills/
 
 | Name | Description |
 |------|-------------|
-| token-distribution | Distribute SPL tokens with 5000x cheaper cost. For airdrops, DePIN, or token distribution. Can implement custom claim for advanced usage. |
-| ask-mcp | Query Light Protocol and related repositories via DeepWiki MCP. Use when answering questions about compressed accounts, Light SDK, Solana development, Claude Code features, or agent skills. |
-| data-streaming | Stream Light Protocol account state via Laserstream gRPC. Covers token accounts, mint accounts, and compressible PDAs with hot/cold lifecycle tracking. |
-| light-sdk | Build rent-free Solana programs with Light SDK. For DeFi (AMMs, vaults, lending), infrastructure, or any Solana program. Anchor macros or Pinocchio patterns. Covers state structs, account creation, CPI, client SDK, router integration, and testing. |
-| light-token-client | Use Light Token client SDKs (TypeScript and Rust). Cookbook for creating mints, associated token accounts, transfers, and more. |
-| solana-compression | Build compressed PDA programs on Solana with Light System Program CPI. Create, update, close, burn, reinitialize compressed accounts. Client integration and testing. |
-| payments-and-wallets | Build payment flows and wallet integrations with light-token. Covers receive/send/balance/history, client-side signing patterns for Privy and Solana wallet adapters, nullifier-based double-spend prevention. |
-| testing | Test Light Protocol programs and clients for localnet, devnet and mainnet. |
-| zk-nullifier | Use for privacy preserving applications and ZK Solana programs. Prevents double spending using rent-free PDAs. |
-| skill-check | Run promptfoo eval suites against Light Protocol agent-skills. Tests routing accuracy, output quality, and adversarial security. |
+| token-distribution | For airdrops, DePIN, or token distribution, 5000x cheaper than SPL with custom claim support. @lightprotocol/compressed-token (TypeScript). |
+| ask-mcp | For questions about compressed accounts, Light SDK, Solana development, Claude Code features, or agent skills. AI-powered answers grounded in repository context via DeepWiki MCP. |
+| data-streaming | For data pipelines, aggregators, or indexers, real-time account state streaming with hot/cold lifecycle tracking. Token accounts, mint accounts, and compressible PDAs via Laserstream gRPC. |
+| light-sdk | For DeFi (AMMs, vaults, lending), infrastructure, or any Solana program, 98% cheaper with rent-free Light-PDAs, token accounts, and mints. Light SDK with Anchor or Pinocchio. State structs, account creation, CPI, router integration, and testing. |
+| light-token-client | For Light Token operations, 200x cheaper than SPL — create mints, associated token accounts, transfer, approve, burn, wrap, and more. @lightprotocol/compressed-token (TypeScript) and light_token_client (Rust). |
+| solana-compression | For per-user state, DePIN registrations, or custom compressed accounts, ~100x cheaper without rent-exemption. Light System Program CPI. Create, update, close, burn, and reinitialize compressed accounts. |
+| payments-and-wallets | For payment flows and wallet integrations, 200x cheaper token accounts. Receive, send, balance, history, and client-side signing with Privy and Solana wallet adapters. Optional nullifier-based double-spend prevention. |
+| testing | For localnet, devnet, and mainnet validation, end-to-end testing of Light Protocol programs and clients. Anchor test, cargo test, and light CLI. |
+| zk-nullifier | For privacy-preserving applications and ZK Solana programs, rent-free nullifier PDAs for double-spend prevention. Proof verification, Merkle trees, and encrypted state. |
+| skill-check | For validating skill correctness, running evals, or verifying skills after edits. Tests routing accuracy, output quality, and adversarial security via Promptfoo eval suites. |
 
 ## Running Evals
 

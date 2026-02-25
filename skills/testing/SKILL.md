@@ -1,6 +1,6 @@
 ---
 name: testing
-description: "Test Light Protocol programs and clients for localnet, devnet and mainnet"
+description: "For testing with Light Protocol programs and clients on localnet, devnet, and mainnet validation."
 metadata:
   openclaw:
     requires:

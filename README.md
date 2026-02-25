@@ -37,15 +37,15 @@ npx skills add Lightprotocol/skills
 
 | Use case                                                                                                                                                                                              | Skill                                                |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
-| Build rent-free Solana programs with Light SDK (Anchor or Pinocchio) for Defi and more. Includes router integration.                                                                                                    | [light-sdk](skills/light-sdk/)                       |
-| Use Light Token client SDKs (TypeScript and Rust) for mints, associated token accounts, transfers                                                                                                                                            | [light-token-client](skills/light-token-client/)     |
-| Stream account state via Laserstream gRPC                                                                                                                                                             | [data-streaming](skills/data-streaming/)             |
-| Build payment flows and wallet integrations with light-token. Covers receive/send/balance/history, client-side signing patterns for Privy and Solana wallet adapters, and nullifier-based double-spend prevention. | [payments-and-wallets](skills/payments-and-wallets/) |
-| Airdrops, DePIN, token distribution                                                                                                                                                                   | [token-distribution](skills/token-distribution/)     |
-| Anti-double-spend nullifiers for Privacy-preserving ZK programs                                                                                                                                       | [zk-nullifier](skills/zk-nullifier/)                 |
-| For per-user state, DePIN nodes, and infrequently accessed app state with compressed PDAs                                                                                                     | [solana-compression](skills/solana-compression/)     |
-| Testing programs and clients on localnet, devnet, mainnet                                                                                                                                             | [testing](skills/testing/)                           |
-| Help with Debugging and Questions via DeepWiki MCP                                                                                                                                                    | [ask-mcp](skills/ask-mcp/)                           |
+| For DeFi (AMMs, vaults, lending), infrastructure, or any Solana program, 98% cheaper with rent-free Light-PDAs, token accounts, and mints | [light-sdk](skills/light-sdk/)                       |
+| For Light Token operations, 200x cheaper than SPL — create mints, associated token accounts, transfer, approve, burn, wrap, and more | [light-token-client](skills/light-token-client/)     |
+| For data pipelines, aggregators, or indexers, real-time account state streaming with hot/cold lifecycle tracking | [data-streaming](skills/data-streaming/)             |
+| For payment flows and wallet integrations, 200x cheaper token accounts | [payments-and-wallets](skills/payments-and-wallets/) |
+| For airdrops, DePIN, or token distribution, 5000x cheaper than SPL with custom claim support | [token-distribution](skills/token-distribution/)     |
+| For privacy-preserving applications and ZK Solana programs, rent-free nullifier PDAs for double-spend prevention | [zk-nullifier](skills/zk-nullifier/)                 |
+| For per-user state, DePIN registrations, or custom compressed accounts, ~100x cheaper without rent-exemption | [solana-compression](skills/solana-compression/)     |
+| For localnet, devnet, and mainnet validation, end-to-end testing of Light Protocol programs and clients | [testing](skills/testing/)                           |
+| For questions about compressed accounts, Light SDK, Solana development, Claude Code features, or agent skills | [ask-mcp](skills/ask-mcp/)                           |
 
 ## Installation
 

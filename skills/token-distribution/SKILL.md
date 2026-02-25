@@ -1,6 +1,6 @@
 ---
 name: token-distribution
-description: "Distribute SPL tokens with 5000x cheaper cost. For Airdrops, Depins, or Token Distribution. Can implement custom claim for advanced usage."
+description: "For token distribution on Solana 5000x cheaper than SPL (rewards, airdrops, depins, ...). @lightprotocol/compressed-token (TypeScript). Reference examples for custom claim support."
 metadata:
   openclaw:
     requires:

@@ -1,6 +1,6 @@
 ---
 name: data-streaming
-description: "Stream Light Protocol account state via Laserstream gRPC. Covers token accounts, mint accounts, and compressible PDAs with hot/cold lifecycle tracking. Use when building custom data pipelines, aggregators, or indexers."
+description: "For data pipelines, aggregators, or indexers, real-time account state streaming on Solana with light account hot/cold lifecycle tracking. Stream Light token accounts, mint accounts, and PDAs via Laserstream gRPC."
 metadata:
   openclaw:
     requires:

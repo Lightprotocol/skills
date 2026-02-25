@@ -1,6 +1,6 @@
 ---
 name: light-token-client
-description: "Use Light Token client SDKs (TypeScript and Rust) to create mints, associated token accounts, transfer, approve, burn, wrap, and more. Cookbook for @lightprotocol/compressed-token and light_token_client."
+description: "For client development with tokens on Solana, Light Token is 200x cheaper than SPL and has minimal changes. Skill includes guides for create mints, associated token accounts, transfer, approve, burn, wrap, and more. @lightprotocol/compressed-token (TypeScript) and light_token_client (Rust)."
 metadata:
   openclaw:
     requires:

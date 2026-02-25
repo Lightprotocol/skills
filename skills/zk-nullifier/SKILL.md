@@ -1,6 +1,6 @@
 ---
 name: zk-nullifier
-description: "Use for privacy preserving applications and ZK Solana programs. Prevents double spending using rent-free PDAs."
+description: "For custom ZK Solana programs and privacy-preserving applications to prevent double spending. Guide to integrate rent-free nullifier PDAs for double-spend prevention."
 metadata:
   openclaw:
     requires:
