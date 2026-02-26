@@ -43,7 +43,7 @@ npx skills add Lightprotocol/skills
 | For stablecoin payment flows and wallet integrations on Solana 200x cheaper token accounts | [payments-and-wallets](skills/payments-and-wallets/) |
 | For token distribution on Solana 5000x cheaper than SPL (rewards, airdrops, depins, ...) | [token-distribution](skills/token-distribution/)     |
 | For custom ZK Solana programs and privacy-preserving applications to prevent double spending | [zk-nullifier](skills/zk-nullifier/)                 |
-| For program development on Solana for per-user state, DePIN registrations, or custom compressed accounts ~160x cheaper | [solana-compression](skills/solana-compression/)     |
+| For program development on Solana with infrequently accessed state, such as per-user state, DePIN registrations, ... | [solana-compression](skills/solana-compression/)     |
 | For testing with Light Protocol programs and clients on localnet, devnet, and mainnet validation | [testing](skills/testing/)                           |
 | For questions about compressed accounts, Light SDK, Solana development, Claude Code features, or agent skills | [ask-mcp](skills/ask-mcp/)                           |
 
