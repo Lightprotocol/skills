@@ -67,6 +67,7 @@ Examples show both localnet and devnet configurations. For devnet, set:
 | Thaw token account | [thaw.md](references/thaw.md) |
 | Close token account | [close-token-account.md](references/close-token-account.md) |
 | Mint SPL, wrap, and transfer | [spl-mint-wrap-transfer.md](references/spl-mint-wrap-transfer.md) |
+| SPL to Light comparison | [spl-to-light.md](references/spl-to-light.md) |
 
 ## Operations overview
 

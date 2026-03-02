@@ -41,6 +41,7 @@ Distribute compressed tokens to multiple recipients using TypeScript client.
 |-------|----------|
 | <10,000 recipients | Single transaction - see [simple-airdrop.md](references/simple-airdrop.md) |
 | 10,000+ recipients | Batched with retry - see [batched-airdrop.md](references/batched-airdrop.md) |
+| SPL to Light comparison | Side-by-side setup ops - see [spl-to-light.md](references/spl-to-light.md) |
 | No-code | [Airship by Helius](https://airship.helius.dev/) (up to 200k) |
 
 ### Cost Comparison

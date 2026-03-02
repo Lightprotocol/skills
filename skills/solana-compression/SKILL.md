@@ -67,6 +67,7 @@ If you just want rent-free Anchor accounts, use the `light-sdk` skill instead. T
 | Client SDK (TypeScript + Rust) | [references/client.md](references/client.md) |
 | Nullifier PDAs (double-spend prevention) | [references/nullifier-pdas.md](references/nullifier-pdas.md) |
 | Error codes (6000-16034) | [references/error-codes.md](references/error-codes.md) |
+| SPL to Light comparison | [references/spl-to-light.md](references/spl-to-light.md) |
 
 ## Reference repos
 

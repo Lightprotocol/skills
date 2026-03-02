@@ -62,6 +62,7 @@ Plural functions (`createTransferInterfaceInstructions`, `createUnwrapInstructio
 | Sign with Wallet Adapter or Mobile Wallet Adapter | [sign-with-adapter.md](references/sign-with-adapter.md) |
 | Sign with Privy (embedded wallet provider) | [sign-with-privy.md](references/sign-with-privy.md) |
 | Prevent duplicate actions (double-spend prevention) | [nullifiers.md](references/nullifiers.md) |
+| SPL to Light comparison | [spl-to-light.md](references/spl-to-light.md) |
 
 ## Setup
 

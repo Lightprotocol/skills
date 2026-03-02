@@ -47,6 +47,7 @@ The Light SDK pays rent-exemption for PDAs, token accounts, and mints. Program l
 | Client SDK (LightProgramInterface) | [references/client-sdk.md](references/client-sdk.md) |
 | Testing | [references/testing.md](references/testing.md) |
 | CPI instructions | [references/instructions.md](references/instructions.md) |
+| SPL to Light comparison | [references/spl-to-light.md](references/spl-to-light.md) |
 | FAQ | [references/faq.md](references/faq.md) |
 | Router integration | [references/router.md](references/router.md) |
 
