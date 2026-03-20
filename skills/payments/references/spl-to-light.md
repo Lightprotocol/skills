@@ -47,7 +47,7 @@ console.log(account.amount);
 import {
   getAssociatedTokenAddressInterface,
   getAtaInterface,
-} from "@lightprotocol/compressed-token/unified";
+} from "@lightprotocol/compressed-token";
 
 const ata = getAssociatedTokenAddressInterface(mint, owner);
 const account = await getAtaInterface(rpc, ata, owner, mint);
@@ -147,9 +147,9 @@ Move tokens between SPL and Light. No SPL equivalent — this bridges the two sy
 import { getAssociatedTokenAddressSync } from "@solana/spl-token";
 import {
   wrap,
-  unwrap,
   getAssociatedTokenAddressInterface,
-} from "@lightprotocol/compressed-token/unified";
+} from "@lightprotocol/compressed-token";
+import { unwrap } from "@lightprotocol/compressed-token/unified";
 
 const splAta = getAssociatedTokenAddressSync(mint, owner.publicKey);
 const tokenAta = getAssociatedTokenAddressInterface(mint, owner.publicKey);
@@ -169,7 +169,7 @@ Creates the ATA if needed and loads any compressed (cold) state into it. Use thi
 import {
   loadAta,
   getAssociatedTokenAddressInterface,
-} from "@lightprotocol/compressed-token/unified";
+} from "@lightprotocol/compressed-token";
 
 const ata = getAssociatedTokenAddressInterface(mint, recipient);
 
@@ -181,4 +181,4 @@ const sig = await loadAta(rpc, ata, recipient, mint, payer);
 - [Migration reference](https://zkcompression.com/api-reference/solana-to-light-comparison)
 - [Payments guide](https://zkcompression.com/light-token/toolkits/for-payments)
 - [Wallets guide](https://zkcompression.com/light-token/toolkits/for-wallets)
-- [Payment examples](https://github.com/Lightprotocol/examples-light-token/tree/main/toolkits/payments-and-wallets)
+- [Payment examples](https://github.com/Lightprotocol/examples-light-token/tree/main/toolkits/payments)
