@@ -1,5 +1,5 @@
 ---
-name: light-payments-skill
+name: payments
 description: "Skill for payment flows using Light Token APIs for sponsored rent-exemption."
 metadata:
   source: https://github.com/Lightprotocol/skills
