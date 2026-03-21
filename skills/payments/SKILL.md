@@ -96,8 +96,8 @@ const rpc = createRpc(RPC_ENDPOINT);
 | Sign with Privy | Integrate with Privy embedded wallets. | [privy](https://zkcompression.com/light-token/wallets/privy) | [sign-with-privy](https://github.com/Lightprotocol/examples-light-token/tree/main/toolkits/sign-with-privy) | [sign-with-privy.md](references/sign-with-privy.md) |
 | Sign with Wallet Adapter | Integrate with Solana Wallet Adapter. | [wallet-adapter](https://zkcompression.com/light-token/wallets/wallet-adapter) | [sign-with-wallet-adapter](https://github.com/Lightprotocol/examples-light-token/tree/main/toolkits/sign-with-wallet-adapter) | [sign-with-adapter.md](references/sign-with-adapter.md) |
 | Gasless transactions | Abstract SOL fees. Sponsor top-ups and transaction fees. | [gasless-transactions](https://zkcompression.com/light-token/wallets/gasless-transactions) | [gasless-transactions](https://github.com/Lightprotocol/examples-light-token/tree/main/toolkits/gasless-transactions) | [gasless-transactions.md](references/gasless-transactions.md) |
-| SPL to Light comparison | Side-by-side API mapping. | | | [spl-to-light.md](references/spl-to-light.md) |
-| Token 2022 extensions | Supported Token 2022 extensions. | | | [extensions/overview.md](references/extensions/overview.md) |
+| SPL to Light comparison | Side-by-side API mapping. | [Docs](https://www.zkcompression.com/api-reference/solana-to-light-comparison) | | [spl-to-light.md](references/spl-to-light.md) |
+| Token 2022 extensions | Supported Token 2022 extensions. | [Docs](https://www.zkcompression.com/extensions/overview) | [Examples](https://github.com/Lightprotocol/examples-light-token/tree/main/extensions) | [extensions/overview.md](references/extensions/overview.md) |
 
 ## SDK references
 
