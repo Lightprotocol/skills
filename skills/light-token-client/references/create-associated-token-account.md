@@ -50,7 +50,7 @@ import {
     Transaction,
     sendAndConfirmTransaction,
 } from "@solana/web3.js";
-import { createRpc, LIGHT_TOKEN_PROGRAM_ID } from "@lightprotocol/stateless.js";
+import { createRpc, CTOKEN_PROGRAM_ID } from "@lightprotocol/stateless.js";
 import {
     createMintInterface,
     createAssociatedTokenAccountInterfaceInstruction,
@@ -85,7 +85,7 @@ const payer = Keypair.fromSecretKey(
         associatedToken,
         owner.publicKey,
         mint,
-        LIGHT_TOKEN_PROGRAM_ID,
+        CTOKEN_PROGRAM_ID,
     );
 
     const tx = new Transaction().add(ix);

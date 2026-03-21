@@ -2,7 +2,7 @@
 
 Mints tokens to a Light Token account.
 
-`mintToInterface` auto-detects the token program (SPL, Token 2022, or Light) from the mint address. `fee_payer` and `max_top_up` are optional fields to customize rent top-ups — set to `None` / `undefined` for defaults.
+`mintToInterface` auto-detects the token program (SPL, Token 2022, or Light) from the mint address. `fee_payer` specifies who pays rent top-ups.
 
 ## TypeScript
 
@@ -204,8 +204,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         destination: associated_token_account,
         amount: mint_amount,
         authority: payer.pubkey(),
-        max_top_up: None,
-        fee_payer: None,
+        fee_payer: payer.pubkey(),
     }
     .instruction()?;
 

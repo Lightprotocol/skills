@@ -17,15 +17,15 @@ import {
     mintToCompressed,
     loadAta,
     getAssociatedTokenAddressInterface,
-} from "@lightprotocol/compressed-token/unified";
+} from "@lightprotocol/compressed-token";
 import { homedir } from "os";
 import { readFileSync } from "fs";
 
 // devnet:
-const RPC_URL = `https://devnet.helius-rpc.com?api-key=${process.env.API_KEY!}`;
-const rpc = createRpc(RPC_URL);
+// const RPC_URL = `https://devnet.helius-rpc.com?api-key=${process.env.API_KEY!}`;
+// const rpc = createRpc(RPC_URL);
 // localnet:
-// const rpc = createRpc();
+const rpc = createRpc();
 
 const payer = Keypair.fromSecretKey(
     new Uint8Array(
@@ -34,14 +34,19 @@ const payer = Keypair.fromSecretKey(
 );
 
 (async function () {
-    // Setup: Get compressed tokens (cold storage)
+    // Inactive Light Tokens are cryptographically preserved on the Solana ledger
+    // as compressed tokens (cold storage)
+    // Setup: Get compressed tokens in light-token associated token account
     const { mint } = await createMintInterface(rpc, payer, payer, null, 9);
     await mintToCompressed(rpc, payer, mint, payer, [
         { recipient: payer.publicKey, amount: 1000n },
     ]);
 
-    // Load compressed tokens to hot balance
-    const lightTokenAta = getAssociatedTokenAddressInterface(mint, payer.publicKey);
+    // Load compressed tokens to light associated token account (hot balance)
+    const lightTokenAta = getAssociatedTokenAddressInterface(
+        mint,
+        payer.publicKey
+    );
     const tx = await loadAta(rpc, lightTokenAta, payer, mint, payer);
 
     console.log("Tx:", tx);
@@ -54,16 +59,17 @@ const payer = Keypair.fromSecretKey(
 import "dotenv/config";
 import { Keypair } from "@solana/web3.js";
 import {
-    createRpc,
-    buildAndSignTx,
-    sendAndConfirmTx,
-} from "@lightprotocol/stateless.js";
+    Keypair,
+    Transaction,
+    sendAndConfirmTransaction,
+} from "@solana/web3.js";
+import { createRpc } from "@lightprotocol/stateless.js";
 import {
     createMintInterface,
     mintToCompressed,
-    createLoadAtaInstructions,
     getAssociatedTokenAddressInterface,
-} from "@lightprotocol/compressed-token/unified";
+} from "@lightprotocol/compressed-token";
+import { createLoadAtaInstructions } from "@lightprotocol/compressed-token/unified";
 import { homedir } from "os";
 import { readFileSync } from "fs";
 
@@ -75,8 +81,8 @@ const rpc = createRpc();
 
 const payer = Keypair.fromSecretKey(
     new Uint8Array(
-        JSON.parse(readFileSync(`${homedir()}/.config/solana/id.json`, "utf8")),
-    ),
+        JSON.parse(readFileSync(`${homedir()}/.config/solana/id.json`, "utf8"))
+    )
 );
 
 (async function () {
@@ -84,15 +90,17 @@ const payer = Keypair.fromSecretKey(
     // as compressed tokens (cold storage)
     // Setup: Get compressed tokens in light-token associated token account
     const { mint } = await createMintInterface(rpc, payer, payer, null, 9);
-    await mintToCompressed(rpc, payer, mint, payer, [{ recipient: payer.publicKey, amount: 1000n }]);
+    await mintToCompressed(rpc, payer, mint, payer, [
+        { recipient: payer.publicKey, amount: 1000n },
+    ]);
 
     const lightTokenAta = getAssociatedTokenAddressInterface(
         mint,
-        payer.publicKey,
+        payer.publicKey
     );
 
-    // Load compressed tokens to light associated token account (hot balance). Usually one tx. Empty = noop.
-    const instructions = await createLoadAtaInstructions(
+    // Load compressed tokens to light associated token account (hot balance)
+    const ixs = await createLoadAtaInstructions(
         rpc,
         lightTokenAta,
         payer.publicKey,
@@ -100,12 +108,11 @@ const payer = Keypair.fromSecretKey(
         payer.publicKey,
     );
 
-    if (instructions.length === 0) return console.log("Nothing to load");
+    if (ixs.length === 0) return console.log("Nothing to load");
 
-    for (const ixs of instructions) {
-        const { blockhash } = await rpc.getLatestBlockhash();
-        const tx = buildAndSignTx(ixs, payer, blockhash);
-        const sig = await sendAndConfirmTx(rpc, tx);
+    for (const batch of ixs) {
+        const tx = new Transaction().add(...batch);
+        const sig = await sendAndConfirmTransaction(rpc, tx, [payer]);
         console.log("Tx:", sig);
     }
 })();

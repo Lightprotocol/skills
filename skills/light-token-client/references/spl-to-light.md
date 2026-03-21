@@ -11,8 +11,8 @@ Side-by-side mapping of SPL Token client operations to Light Token equivalents. 
 | Create ATA | `getOrCreateAssociatedTokenAccount` | `createAtaInterface` | `create_associated_token_account` | `CreateAta` |
 | Mint tokens | `mintTo` | `mintToInterface` | `mint_to` | `MintTo` |
 | Transfer | `transfer` | `transferInterface` | `transfer` | `TransferInterface` |
-| Approve | `approve` | `approve` | `approve` | `Approve` |
-| Revoke | `revoke` | `revoke` | `revoke` | `Revoke` |
+| Approve | `approve` | `approveInterface` | `approve` | `Approve` |
+| Revoke | `revoke` | `revokeInterface` | `revoke` | `Revoke` |
 | Create token account | — | — | `initialize_account` | `CreateTokenAccount` |
 | Burn | — | — | `burn` | `Burn` |
 | Freeze | — | — | `freeze_account` | `Freeze` |
@@ -460,8 +460,7 @@ let sig = TransferInterface {
     destination,
     amount,
     decimals,
-    spl_token_program: None,
-    restricted: false,
+    ..Default::default()
 }
 .execute(&mut rpc, &payer, &authority)
 .await?;
@@ -508,15 +507,18 @@ const tx = await approve(
 
 ```typescript
 // Light
-import { approve } from "@lightprotocol/compressed-token";
+import { approveInterface } from "@lightprotocol/compressed-token/unified";
+import { getAssociatedTokenAddressInterface } from "@lightprotocol/compressed-token";
 
-const tx = await approve(
+const senderAta = getAssociatedTokenAddressInterface(mint, owner.publicKey);
+const tx = await approveInterface(
   rpc,
   payer,
+  senderAta,
   mint,
+  delegate,
   amount,
-  owner,
-  delegate
+  owner
 );
 ```
 
@@ -584,14 +586,11 @@ const tx = await revoke(
 
 ```typescript
 // Light
-import { revoke } from "@lightprotocol/compressed-token";
+import { revokeInterface } from "@lightprotocol/compressed-token/unified";
+import { getAssociatedTokenAddressInterface } from "@lightprotocol/compressed-token";
 
-const tx = await revoke(
-  rpc,
-  payer,
-  delegatedAccounts,
-  owner
-);
+const senderAta = getAssociatedTokenAddressInterface(mint, owner.publicKey);
+const tx = await revokeInterface(rpc, payer, senderAta, mint, owner);
 ```
 
 ### Rust action
@@ -686,8 +685,7 @@ let ix = Burn {
     mint,
     amount,
     authority: payer.pubkey(),
-    max_top_up: None,
-    fee_payer: None,
+    fee_payer: payer.pubkey(),
 }
 .instruction()?;
 ```
@@ -772,9 +770,9 @@ Move tokens between SPL and Light. No SPL equivalent — this bridges the two sy
 import { getAssociatedTokenAddressSync } from "@solana/spl-token";
 import {
   wrap,
-  unwrap,
   getAssociatedTokenAddressInterface,
-} from "@lightprotocol/compressed-token/unified";
+} from "@lightprotocol/compressed-token";
+import { unwrap } from "@lightprotocol/compressed-token/unified";
 
 const splAta = getAssociatedTokenAddressSync(mint, owner.publicKey);
 const tokenAta = getAssociatedTokenAddressInterface(mint, owner.publicKey);
@@ -789,33 +787,30 @@ await unwrap(rpc, payer, splAta, owner, mint, amount);
 ### Rust
 
 ```rust
-use light_token_client::actions::wrap::Wrap;
+use light_token_client::actions::Wrap;
 
-Wrap {
-    rpc: &mut rpc,
-    payer: &payer,
-    spl_ata,
-    light_ata,
-    owner: &owner,
+let sig = Wrap {
+    source_spl_ata: spl_ata,
+    destination: light_ata,
     mint,
     amount,
+    decimals,
 }
-.execute()
+.execute(&mut rpc, &payer, &payer)
 .await?;
 ```
 
 ```rust
-use light_token_client::actions::unwrap::Unwrap;
+use light_token_client::actions::Unwrap;
 
-Unwrap {
-    rpc: &mut rpc,
-    payer: &payer,
-    spl_ata,
-    owner: &owner,
+let sig = Unwrap {
+    source: light_ata,
+    destination_spl_ata: spl_ata,
     mint,
     amount,
+    decimals,
 }
-.execute()
+.execute(&mut rpc, &payer, &payer)
 .await?;
 ```
 
@@ -835,7 +830,7 @@ console.log(account.amount);
 import {
   getAssociatedTokenAddressInterface,
   getAtaInterface,
-} from "@lightprotocol/compressed-token/unified";
+} from "@lightprotocol/compressed-token";
 
 const ata = getAssociatedTokenAddressInterface(mint, owner);
 const account = await getAtaInterface(rpc, ata, owner, mint);
@@ -867,7 +862,7 @@ Creates the ATA if needed and loads any compressed (cold) state into it. Light T
 import {
   loadAta,
   getAssociatedTokenAddressInterface,
-} from "@lightprotocol/compressed-token/unified";
+} from "@lightprotocol/compressed-token";
 
 const ata = getAssociatedTokenAddressInterface(mint, recipient);
 

@@ -22,7 +22,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         mut rpc,
         payer,
         mint,
-        ata,
+        associated_token_account,
         decimals,
         ..
     } = setup().await;
@@ -31,13 +31,12 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     // BurnChecked validates that decimals match the mint
     let burn_ix = BurnChecked {
-        source: ata,
+        source: associated_token_account,
         mint,
         amount: burn_amount,
         decimals,
         authority: payer.pubkey(),
-        max_top_up: None,
-        fee_payer: None,
+        fee_payer: payer.pubkey(),
     }
     .instruction()?;
 
@@ -45,7 +44,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .create_and_send_transaction(&[burn_ix], &payer.pubkey(), &[&payer])
         .await?;
 
-    let data = rpc.get_account(ata).await?.ok_or("Account not found")?;
+    let data = rpc.get_account(associated_token_account).await?.ok_or("Account not found")?;
     let token = light_token_interface::state::Token::deserialize(&mut &data.data[..])?;
     println!("Balance: {} Tx: {sig}", token.amount);
 

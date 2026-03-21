@@ -108,6 +108,7 @@ const payer = Keypair.fromSecretKey(
         recipientAta,
         sender.publicKey,
         500_000_000,
+        payer.publicKey,  // optional: separate feePayer covers top-up
     );
 
     const tx = new Transaction().add(ix);
@@ -191,7 +192,7 @@ use solana_sdk::signer::Signer;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let mut rpc = LightProgramTest::new(ProgramTestConfig::new_v2(true, None)).await?;
+    let mut rpc = LightProgramTest::new(ProgramTestConfig::new(true, None)).await?;
 
     let payer = rpc.get_payer().insecure_clone();
     let decimals = 2u8;
@@ -227,8 +228,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         decimals,
         authority: payer.pubkey(),
         payer: payer.pubkey(),
+        mint,
         spl_interface: Some(spl_interface),
-        max_top_up: None,
         source_owner: spl_token::ID,
         destination_owner: LIGHT_TOKEN_PROGRAM_ID,
     }

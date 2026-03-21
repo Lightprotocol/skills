@@ -58,6 +58,7 @@ Examples show both localnet and devnet configurations. For devnet, set:
 | Transfer checked | [transfer-checked.md](references/transfer-checked.md) |
 | Approve delegate | [approve.md](references/approve.md) |
 | Revoke delegate | [revoke.md](references/revoke.md) |
+| Delegate transfer | [delegate-transfer.md](references/delegate-transfer.md) |
 | Wrap SPL to Light | [wrap.md](references/wrap.md) |
 | Unwrap Light to SPL | [unwrap.md](references/unwrap.md) |
 | Load associated token account | [load-associated-token-account.md](references/load-associated-token-account.md) |
@@ -68,6 +69,17 @@ Examples show both localnet and devnet configurations. For devnet, set:
 | Close token account | [close-token-account.md](references/close-token-account.md) |
 | Mint SPL, wrap, and transfer | [spl-mint-wrap-transfer.md](references/spl-mint-wrap-transfer.md) |
 | SPL to Light comparison | [spl-to-light.md](references/spl-to-light.md) |
+| Token 2022 extensions overview | [extensions/overview.md](references/extensions/overview.md) |
+| Metadata + MetadataPointer | [extensions/metadata-and-metadata-pointer.md](references/extensions/metadata-and-metadata-pointer.md) |
+| Transfer fees | [extensions/transfer-fees.md](references/extensions/transfer-fees.md) |
+| Transfer hook | [extensions/transfer-hook.md](references/extensions/transfer-hook.md) |
+| Interest-bearing tokens | [extensions/interest-bearing-tokens.md](references/extensions/interest-bearing-tokens.md) |
+| Default account state | [extensions/default-account-state.md](references/extensions/default-account-state.md) |
+| Permanent delegate | [extensions/permanent-delegate.md](references/extensions/permanent-delegate.md) |
+| Mint close authority | [extensions/close-mint.md](references/extensions/close-mint.md) |
+| Token groups and members | [extensions/token-groups-and-members.md](references/extensions/token-groups-and-members.md) |
+| Pausable mint | [extensions/pausable-mint.md](references/extensions/pausable-mint.md) |
+| Confidential transfer | [extensions/confidential-transfer.md](references/extensions/confidential-transfer.md) |
 
 ## Operations overview
 
@@ -82,8 +94,9 @@ Examples show both localnet and devnet configurations. For devnet, set:
 | Mint to | `mintToInterface` | `MintTo` | [mint-to](https://zkcompression.com/light-token/cookbook/mint-to) |
 | Transfer | `transferInterface` | `TransferInterface` | [transfer-interface](https://zkcompression.com/light-token/cookbook/transfer-interface) |
 | Transfer checked | — | `TransferChecked` | [transfer-checked](https://zkcompression.com/light-token/cookbook/transfer-checked) |
-| Approve | `approve` | `Approve` | [approve-revoke](https://zkcompression.com/light-token/cookbook/approve-revoke) |
-| Revoke | `revoke` | `Revoke` | [approve-revoke](https://zkcompression.com/light-token/cookbook/approve-revoke) |
+| Approve | `approveInterface` | `Approve` | [approve-revoke](https://zkcompression.com/light-token/cookbook/approve-revoke) |
+| Revoke | `revokeInterface` | `Revoke` | [approve-revoke](https://zkcompression.com/light-token/cookbook/approve-revoke) |
+| Delegate transfer | `transferInterface` + `{ owner }` | — | [approve-revoke](https://zkcompression.com/light-token/cookbook/approve-revoke) |
 | Burn | — | `Burn` | [burn](https://zkcompression.com/light-token/cookbook/burn) |
 | Burn checked | — | `BurnChecked` | [burn](https://zkcompression.com/light-token/cookbook/burn) |
 | Wrap SPL to Light | `wrap` | `Wrap` | [wrap-unwrap](https://zkcompression.com/light-token/cookbook/wrap-unwrap) |

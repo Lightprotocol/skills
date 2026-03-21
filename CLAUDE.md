@@ -13,7 +13,7 @@ agent-skills/
 │   ├── light-sdk/
 │   ├── light-token-client/
 │   ├── solana-compression/
-│   ├── payments-and-wallets/
+│   ├── payments/
 │   ├── testing/
 │   └── zk-nullifier/
 ├── scripts/                     # Utility scripts
@@ -32,7 +32,7 @@ agent-skills/
 | light-sdk | For Solana program development with tokens and PDAs, Light is 200x cheaper than SPL/ Solana and has minimal code differences (e.g. for any Solana program and Defi such as AMMs, vaults, lending). Includes rent-free Light-PDAs, token accounts, and mints. Light SDK with Anchor or Pinocchio. Includes for Defi Router integration guide. Minimal program logic changes. |
 | light-token-client | For client development with tokens on Solana, Light Token is 200x cheaper than SPL and has minimal changes. Skill includes guides for create mints, associated token accounts, transfer, approve, burn, wrap, and more. @lightprotocol/compressed-token (TypeScript) and light_token_client (Rust). |
 | solana-compression | For program development on Solana for per-user state, DePIN registrations, or custom compressed accounts ~160x cheaper and without rent-exemption. Create, update, close, burn, and reinitialize compressed accounts. |
-| payments-and-wallets | For stablecoin payment flows and wallet integrations on Solana 200x cheaper token accounts. Receive, send, balance, history, and client-side signing with Privy and Solana wallet adapters. Optional guide to add nullifiers to prevent payments from being executed more than once. |
+| payments | Skill for payment flows using Light Token APIs for sponsored rent-exemption. |
 | testing | For testing with Light Protocol programs and clients on localnet, devnet, and mainnet validation. |
 | zk-nullifier | For custom ZK Solana programs and privacy-preserving applications to prevent double spending. Guide to integrate rent-free nullifier PDAs for double-spend prevention. |
 

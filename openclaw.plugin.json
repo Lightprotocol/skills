@@ -29,7 +29,7 @@
     "skills/light-sdk",
     "skills/light-token-client",
     "skills/solana-compression",
-    "skills/payments-and-wallets",
+    "skills/payments",
     "skills/testing",
     "skills/zk-nullifier"
   ],
