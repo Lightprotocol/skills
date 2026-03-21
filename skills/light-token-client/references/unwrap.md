@@ -70,13 +70,21 @@ import {
     Transaction,
     sendAndConfirmTransaction,
 } from "@solana/web3.js";
-import { createRpc, bn } from "@lightprotocol/stateless.js";
+import { createRpc } from "@lightprotocol/stateless.js";
 import {
     createMintInterface,
-    mintToCompressed,
+    createAtaInterface,
+    getAssociatedTokenAddressInterface,
+} from "@lightprotocol/compressed-token";
+import {
+    wrap,
     createUnwrapInstructions,
 } from "@lightprotocol/compressed-token/unified";
-import { createAssociatedTokenAccount } from "@solana/spl-token";
+import {
+    TOKEN_PROGRAM_ID,
+    createAssociatedTokenAccount,
+    mintTo,
+} from "@solana/spl-token";
 import { homedir } from "os";
 import { readFileSync } from "fs";
 

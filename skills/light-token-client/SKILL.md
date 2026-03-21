@@ -96,7 +96,7 @@ Examples show both localnet and devnet configurations. For devnet, set:
 | Transfer checked | — | `TransferChecked` | [transfer-checked](https://zkcompression.com/light-token/cookbook/transfer-checked) |
 | Approve | `approveInterface` | `Approve` | [approve-revoke](https://zkcompression.com/light-token/cookbook/approve-revoke) |
 | Revoke | `revokeInterface` | `Revoke` | [approve-revoke](https://zkcompression.com/light-token/cookbook/approve-revoke) |
-| Delegate transfer | `transferDelegatedInterface` | — | [approve-revoke](https://zkcompression.com/light-token/cookbook/approve-revoke) |
+| Delegate transfer | `transferInterface` + `{ owner }` | — | [approve-revoke](https://zkcompression.com/light-token/cookbook/approve-revoke) |
 | Burn | — | `Burn` | [burn](https://zkcompression.com/light-token/cookbook/burn) |
 | Burn checked | — | `BurnChecked` | [burn](https://zkcompression.com/light-token/cookbook/burn) |
 | Wrap SPL to Light | `wrap` | `Wrap` | [wrap-unwrap](https://zkcompression.com/light-token/cookbook/wrap-unwrap) |

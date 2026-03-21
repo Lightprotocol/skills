@@ -59,16 +59,17 @@ const payer = Keypair.fromSecretKey(
 import "dotenv/config";
 import { Keypair } from "@solana/web3.js";
 import {
-    createRpc,
-    buildAndSignTx,
-    sendAndConfirmTx,
-} from "@lightprotocol/stateless.js";
+    Keypair,
+    Transaction,
+    sendAndConfirmTransaction,
+} from "@solana/web3.js";
+import { createRpc } from "@lightprotocol/stateless.js";
 import {
     createMintInterface,
     mintToCompressed,
-    createLoadAtaInstructions,
     getAssociatedTokenAddressInterface,
 } from "@lightprotocol/compressed-token";
+import { createLoadAtaInstructions } from "@lightprotocol/compressed-token/unified";
 import { homedir } from "os";
 import { readFileSync } from "fs";
 
@@ -109,10 +110,11 @@ const payer = Keypair.fromSecretKey(
 
     if (ixs.length === 0) return console.log("Nothing to load");
 
-    const blockhash = await rpc.getLatestBlockhash();
-    const tx = buildAndSignTx(ixs, payer, blockhash.blockhash);
-    const signature = await sendAndConfirmTx(rpc, tx);
-    console.log("Tx:", signature);
+    for (const batch of ixs) {
+        const tx = new Transaction().add(...batch);
+        const sig = await sendAndConfirmTransaction(rpc, tx, [payer]);
+        console.log("Tx:", sig);
+    }
 })();
 ```
 

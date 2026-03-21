@@ -108,6 +108,7 @@ const payer = Keypair.fromSecretKey(
         recipientAta,
         sender.publicKey,
         500_000_000,
+        payer.publicKey,  // optional: separate feePayer covers top-up
     );
 
     const tx = new Transaction().add(ix);

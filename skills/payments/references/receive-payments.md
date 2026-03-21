@@ -11,7 +11,7 @@ import { Transaction } from "@solana/web3.js";
 import {
   createLoadAtaInstructions,
   getAssociatedTokenAddressInterface,
-} from "@lightprotocol/compressed-token";
+} from "@lightprotocol/compressed-token/unified";
 
 const ata = getAssociatedTokenAddressInterface(mint, recipient);
 
@@ -39,7 +39,7 @@ for (const ixs of instructions) {
 import {
   loadAta,
   getAssociatedTokenAddressInterface,
-} from "@lightprotocol/compressed-token";
+} from "@lightprotocol/compressed-token/unified";
 
 const ata = getAssociatedTokenAddressInterface(mint, recipient);
 

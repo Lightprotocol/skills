@@ -12,13 +12,19 @@ import { Keypair } from "@solana/web3.js";
 import { createRpc } from "@lightprotocol/stateless.js";
 import {
     createMintInterface,
-    mintToCompressed,
+    createAtaInterface,
     getAssociatedTokenAddressInterface,
 } from "@lightprotocol/compressed-token";
 import {
     approveInterface,
-    transferDelegatedInterface,
+    transferInterface,
+    wrap,
 } from "@lightprotocol/compressed-token/unified";
+import {
+    TOKEN_PROGRAM_ID,
+    createAssociatedTokenAccount,
+    mintTo,
+} from "@solana/spl-token";
 import { homedir } from "os";
 import { readFileSync } from "fs";
 
@@ -35,12 +41,41 @@ const payer = Keypair.fromSecretKey(
 );
 
 (async function () {
-    const { mint } = await createMintInterface(rpc, payer, payer, null, 9);
-    await mintToCompressed(rpc, payer, mint, payer, [
-        { recipient: payer.publicKey, amount: 1000n },
-    ]);
+    // Setup: Create SPL mint, fund, wrap into Light ATA (hot balance)
+    const { mint } = await createMintInterface(
+        rpc,
+        payer,
+        payer,
+        null,
+        9,
+        undefined,
+        undefined,
+        TOKEN_PROGRAM_ID
+    );
+    const splAta = await createAssociatedTokenAccount(
+        rpc,
+        payer,
+        mint,
+        payer.publicKey,
+        undefined,
+        TOKEN_PROGRAM_ID
+    );
+    await mintTo(rpc, payer, mint, splAta, payer, 1_000_000_000);
+    await createAtaInterface(rpc, payer, mint, payer.publicKey);
+    const senderAta = getAssociatedTokenAddressInterface(
+        mint,
+        payer.publicKey
+    );
+    await wrap(
+        rpc,
+        payer,
+        splAta,
+        senderAta,
+        payer,
+        mint,
+        BigInt(1_000_000_000)
+    );
 
-    const senderAta = getAssociatedTokenAddressInterface(mint, payer.publicKey);
     const delegate = Keypair.generate();
     const recipient = Keypair.generate();
 
@@ -51,21 +86,22 @@ const payer = Keypair.fromSecretKey(
         senderAta,
         mint,
         delegate.publicKey,
-        500_000,
+        500_000_000,
         payer
     );
     console.log("Approved delegate:", delegate.publicKey.toBase58());
 
     // Delegate transfers tokens on behalf of the owner
-    const tx = await transferDelegatedInterface(
+    const tx = await transferInterface(
         rpc,
         payer,
         senderAta,
         mint,
         recipient.publicKey,
         delegate,
-        payer.publicKey,
-        200_000
+        200_000_000,
+        undefined,
+        { owner: payer.publicKey }
     );
 
     console.log("Delegated transfer:", tx);

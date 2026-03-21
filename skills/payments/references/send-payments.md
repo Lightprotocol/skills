@@ -93,12 +93,14 @@ await sendAndConfirmTransaction(rpc, transferTx);
 
 | File | Description | Key function |
 |:-----|:------------|:-------------|
-| [send-action.ts](https://github.com/Lightprotocol/examples-light-token/blob/main/toolkits/payments/send/send-action.ts) | Send tokens. One call handles loading and recipient account creation. | `transferInterface` |
-| [send-instruction.ts](https://github.com/Lightprotocol/examples-light-token/blob/main/toolkits/payments/send/send-instruction.ts) | Same transfer, but returns raw instructions for custom transaction building. | `createTransferInterfaceInstructions` |
+| [basic-send-action.ts](https://github.com/Lightprotocol/examples-light-token/blob/main/toolkits/payments/send/basic-send-action.ts) | Send tokens. One call handles loading and recipient account creation. | `transferInterface` |
+| [basic-send-instruction.ts](https://github.com/Lightprotocol/examples-light-token/blob/main/toolkits/payments/send/basic-send-instruction.ts) | Same transfer, but returns raw instructions for custom transaction building. | `createTransferInterfaceInstructions` |
 | [payment-with-memo.ts](https://github.com/Lightprotocol/examples-light-token/blob/main/toolkits/payments/send/payment-with-memo.ts) | Attach an invoice ID or payment reference. Reads it back from transaction logs. | `createTransferInterfaceInstructions`, `sliceLast` |
 | [batch-send.ts](https://github.com/Lightprotocol/examples-light-token/blob/main/toolkits/payments/send/batch-send.ts) | Pay multiple recipients in one transaction. | `createTransferInterfaceInstructions`, `createAtaInterfaceIdempotent` |
 | [sign-all-transactions.ts](https://github.com/Lightprotocol/examples-light-token/blob/main/toolkits/payments/send/sign-all-transactions.ts) | Sign all transactions with one wallet approval. Shows parallel load optimization. | `signAllTransactions`, `sliceLast` |
 | [verify-address.ts](https://github.com/Lightprotocol/examples-light-token/blob/main/toolkits/payments/verify/verify-address.ts) | Confirm a recipient account exists before sending. | `getAssociatedTokenAddressInterface`, `getAtaInterface` |
+
+> `transferInterface` supports delegated transfers: pass `{ owner: ownerPublicKey }` as the 9th parameter, with the delegate as the signer (6th param). See [spend-permissions.md](spend-permissions.md).
 
 > For gasless transfers (separate fee payer / sponsor), see [gasless-transactions.md](gasless-transactions.md).
 

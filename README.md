@@ -49,7 +49,11 @@ npx skills add Lightprotocol/skills
 
 ## Installation
 
-These skills work with any AI agent. We recommend [Claude Code](https://claude.ai/code) with Opus models.
+These skills work with any AI agent. Pick your skills to install:
+
+```
+npx skills add Lightprotocol/skills
+```
 
 ### Claude Code
 
@@ -85,12 +89,6 @@ The plugin manifest is defined in [`openclaw.plugin.json`](openclaw.plugin.json)
 3. Enter: `https://github.com/Lightprotocol/skills.git`
 
 Skills are auto-discovered based on context. Ask about light-token, defi, payments, or program migration and the agent uses the relevant skill automatically.
-
-### Any Agent
-
-```
-npx skills add Lightprotocol/skills
-```
 
 ## Workflow
 
@@ -167,14 +165,14 @@ Use rent-free PDAs for: user state, app state, nullifiers for payments, DePIN no
 | Name | Description | Docs | Examples |
 |------|-------------|------|----------|
 | Overview | Learn how the Light Token APIs reduce account creation cost for stablecoin payment infrastructure by 99% with similar developer experience to SPL / Token 2022. | [overview](https://zkcompression.com/light-token/payments/overview) | |
-| Basic payment | Send a single token transfer with Light Token APIs for stablecoin payments with comparison to SPL. | [basic-payment](https://zkcompression.com/light-token/payments/basic-payment) | [send-action](https://github.com/Lightprotocol/examples-light-token/blob/main/toolkits/payments/send/send-action.ts) \| [send-instruction](https://github.com/Lightprotocol/examples-light-token/blob/main/toolkits/payments/send/send-instruction.ts) |
+| Basic payment | Send a single token transfer with Light Token APIs for stablecoin payments with comparison to SPL. | [basic-payment](https://zkcompression.com/light-token/payments/basic-payment) | [basic-send-action](https://github.com/Lightprotocol/examples-light-token/blob/main/toolkits/payments/send/basic-send-action.ts) \| [basic-send-instruction](https://github.com/Lightprotocol/examples-light-token/blob/main/toolkits/payments/send/basic-send-instruction.ts) |
 | Batch payments | Send payments to multiple recipients in a single transaction or sequentially. | [batch-payments](https://zkcompression.com/light-token/payments/batch-payments) | [batch-send](https://github.com/Lightprotocol/examples-light-token/blob/main/toolkits/payments/send/batch-send.ts) |
 | Payment with memo | Attach invoice IDs, payment references, or notes to Light Token transfers using Solana's memo program. The memo is recorded in the transaction logs for reconciliation. | [payment-with-memo](https://zkcompression.com/light-token/payments/payment-with-memo) | [payment-with-memo](https://github.com/Lightprotocol/examples-light-token/blob/main/toolkits/payments/send/payment-with-memo.ts) |
 | Receive payments | Prepare to receive token payments by loading cold accounts and sharing your associated token account address. | [receive-payments](https://zkcompression.com/light-token/payments/receive-payments) | [receive](https://github.com/Lightprotocol/examples-light-token/blob/main/toolkits/payments/receive/receive.ts) |
 | Verify payments | Query token balances and transaction history to verify incoming payments. | [verify-payments](https://zkcompression.com/light-token/payments/verify-payments) | [get-balance](https://github.com/Lightprotocol/examples-light-token/blob/main/toolkits/payments/verify/get-balance.ts) \| [get-history](https://github.com/Lightprotocol/examples-light-token/blob/main/toolkits/payments/verify/get-history.ts) |
 | Verify address | Verify recipient addresses before sending payments. Address validation prevents sending tokens to invalid or unexpected account types. | [verify-recipient-address](https://zkcompression.com/light-token/payments/verify-recipient-address) | [verify-address](https://github.com/Lightprotocol/examples-light-token/blob/main/toolkits/payments/verify/verify-address.ts) |
 | Wrap and unwrap | Move tokens between SPL / Token 2022 and Light Token accounts for interoperability with applications that don't support Light Token yet. | [wrap-unwrap](https://zkcompression.com/light-token/payments/wrap-unwrap) | [wrap](https://github.com/Lightprotocol/examples-light-token/blob/main/toolkits/payments/interop/wrap.ts) \| [unwrap](https://github.com/Lightprotocol/examples-light-token/blob/main/toolkits/payments/interop/unwrap.ts) |
-| Spend permissions | Delegate token spending to a third party with an amount cap. The delegate can transfer tokens on behalf of the owner up to the approved amount, without the owner signing each transaction. | [spend-permissions](https://zkcompression.com/light-token/payments/spend-permissions) | [delegate-full-flow](https://github.com/Lightprotocol/examples-light-token/blob/main/toolkits/payments/spend-permissions/delegate-full-flow.ts) |
+| Spend permissions | Delegate token spending to a third party with an amount cap. The delegate can transfer tokens on behalf of the owner up to the approved amount, without the owner signing each transaction. | [spend-permissions](https://zkcompression.com/light-token/payments/spend-permissions) | [delegate-approve](https://github.com/Lightprotocol/examples-light-token/blob/main/toolkits/payments/spend-permissions/delegate-approve.ts) \| [delegate-transfer](https://github.com/Lightprotocol/examples-light-token/blob/main/toolkits/payments/spend-permissions/delegate-transfer.ts) |
 | Nullifier PDAs | Create rent-free nullifier PDAs to prevent duplicate actions. | [nullifier-pda](https://zkcompression.com/pda/compressed-pdas/nullifier-pda) | |
 | Production readiness | Non-exhaustive checklist for deploying Light Token payment flows to production, including RPC infrastructure, error handling, and security. | [production-readiness](https://zkcompression.com/light-token/payments/production-readiness) | |
 | Wallet integration | Guide for Wallet Applications to add Light-token support. | [wallets/overview](https://zkcompression.com/light-token/wallets/overview) | |

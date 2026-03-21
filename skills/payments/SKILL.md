@@ -53,26 +53,6 @@ Build payment flows using light-token on Solana. The light-token API matches SPL
 
 Plural functions (`createTransferInterfaceInstructions`, `createUnwrapInstructions`) return `TransactionInstruction[][]` — each inner array is one transaction. They handle loading cold accounts automatically.
 
-## Domain references
-
-| Task | Reference |
-|------|-----------|
-| Send payments (basic, batch, memo, sign-all) | [send-payments.md](references/send-payments.md) |
-| Receive payments (load ATA, share address) | [receive-payments.md](references/receive-payments.md) |
-| Show token balance | [show-balance.md](references/show-balance.md) |
-| Verify recipient address | [verify-address.md](references/verify-address.md) |
-| Transaction history | [transaction-history.md](references/transaction-history.md) |
-| Spend permissions (delegation: approve, revoke, check) | [spend-permissions.md](references/spend-permissions.md) |
-| Wrap tokens from SPL to light-token | [wrap-from-spl.md](references/wrap-from-spl.md) |
-| Unwrap tokens from light-token to SPL | [unwrap-to-spl.md](references/unwrap-to-spl.md) |
-| Register existing SPL mint for light-token | [register-spl-mint.md](references/register-spl-mint.md) |
-| Gasless transactions (sponsor fees) | [gasless-transactions.md](references/gasless-transactions.md) |
-| Sign with Wallet Adapter or Mobile Wallet Adapter | [sign-with-adapter.md](references/sign-with-adapter.md) |
-| Sign with Privy (embedded wallet provider) | [sign-with-privy.md](references/sign-with-privy.md) |
-| Prevent duplicate actions (double-spend prevention) | [nullifiers.md](references/nullifiers.md) |
-| SPL to Light comparison | [spl-to-light.md](references/spl-to-light.md) |
-| Token 2022 extensions | [extensions/overview.md](references/extensions/overview.md) |
-
 ## Setup
 
 ```bash
@@ -98,10 +78,26 @@ const rpc = createRpc(RPC_ENDPOINT);
 
 ## Resources
 
-- [Payments docs](https://zkcompression.com/light-token/payments/integration-guide)
-- [Wallets docs](https://zkcompression.com/light-token/wallets/overview)
-- [GitHub examples](https://github.com/Lightprotocol/examples-light-token/tree/main/toolkits/payments)
-- [Nullifier program](https://github.com/Lightprotocol/nullifier-program/)
+| Name | Description | Docs | Examples | Reference |
+|------|-------------|------|----------|-----------|
+| Overview | Light Token APIs reduce account creation cost for stablecoin payment infrastructure by 99%. | [overview](https://zkcompression.com/light-token/payments/overview) | | |
+| Basic payment | Send a single token transfer with comparison to SPL. | [basic-payment](https://zkcompression.com/light-token/payments/basic-payment) | [basic-send-action](https://github.com/Lightprotocol/examples-light-token/blob/main/toolkits/payments/send/basic-send-action.ts) \| [basic-send-instruction](https://github.com/Lightprotocol/examples-light-token/blob/main/toolkits/payments/send/basic-send-instruction.ts) | [send-payments.md](references/send-payments.md) |
+| Batch payments | Send payments to multiple recipients in a single transaction. | [batch-payments](https://zkcompression.com/light-token/payments/batch-payments) | [batch-send](https://github.com/Lightprotocol/examples-light-token/blob/main/toolkits/payments/send/batch-send.ts) | [send-payments.md](references/send-payments.md) |
+| Payment with memo | Attach invoice IDs or payment references using Solana's memo program. | [payment-with-memo](https://zkcompression.com/light-token/payments/payment-with-memo) | [payment-with-memo](https://github.com/Lightprotocol/examples-light-token/blob/main/toolkits/payments/send/payment-with-memo.ts) | [send-payments.md](references/send-payments.md) |
+| Receive payments | Load cold accounts and share ATA address with the sender. | [receive-payments](https://zkcompression.com/light-token/payments/receive-payments) | [receive](https://github.com/Lightprotocol/examples-light-token/blob/main/toolkits/payments/receive/receive.ts) | [receive-payments.md](references/receive-payments.md) |
+| Verify payments | Query token balances and transaction history. | [verify-payments](https://zkcompression.com/light-token/payments/verify-payments) | [get-balance](https://github.com/Lightprotocol/examples-light-token/blob/main/toolkits/payments/verify/get-balance.ts) \| [get-history](https://github.com/Lightprotocol/examples-light-token/blob/main/toolkits/payments/verify/get-history.ts) | [show-balance.md](references/show-balance.md) \| [transaction-history.md](references/transaction-history.md) |
+| Verify address | Verify recipient addresses before sending payments. | [verify-recipient-address](https://zkcompression.com/light-token/payments/verify-recipient-address) | [verify-address](https://github.com/Lightprotocol/examples-light-token/blob/main/toolkits/payments/verify/verify-address.ts) | [verify-address.md](references/verify-address.md) |
+| Wrap and unwrap | Move tokens between SPL / Token 2022 and Light Token accounts. | [wrap-unwrap](https://zkcompression.com/light-token/payments/wrap-unwrap) | [wrap](https://github.com/Lightprotocol/examples-light-token/blob/main/toolkits/payments/interop/wrap.ts) \| [unwrap](https://github.com/Lightprotocol/examples-light-token/blob/main/toolkits/payments/interop/unwrap.ts) | [wrap-from-spl.md](references/wrap-from-spl.md) \| [unwrap-to-spl.md](references/unwrap-to-spl.md) |
+| Register SPL mint | Register existing SPL mint for light-token interop. | | [register-spl-mint](https://github.com/Lightprotocol/examples-light-token/blob/main/toolkits/payments/interop/register-spl-mint.ts) | [register-spl-mint.md](references/register-spl-mint.md) |
+| Spend permissions | Delegate token spending with an amount cap. Approve, transfer as delegate, revoke. | [spend-permissions](https://zkcompression.com/light-token/payments/spend-permissions) | [delegate-approve](https://github.com/Lightprotocol/examples-light-token/blob/main/toolkits/payments/spend-permissions/delegate-approve.ts) \| [delegate-transfer](https://github.com/Lightprotocol/examples-light-token/blob/main/toolkits/payments/spend-permissions/delegate-transfer.ts) | [spend-permissions.md](references/spend-permissions.md) |
+| Nullifier PDAs | Create rent-free nullifier PDAs to prevent duplicate actions. | [nullifier-pda](https://zkcompression.com/pda/compressed-pdas/nullifier-pda) | | [nullifiers.md](references/nullifiers.md) |
+| Production readiness | Checklist for deploying to production: RPC, error handling, security. | [production-readiness](https://zkcompression.com/light-token/payments/production-readiness) | | [production-readiness.md](references/production-readiness.md) |
+| Wallet integration | Guide for Wallet Applications to add Light-token support. | [wallets/overview](https://zkcompression.com/light-token/wallets/overview) | | |
+| Sign with Privy | Integrate with Privy embedded wallets. | [privy](https://zkcompression.com/light-token/wallets/privy) | [sign-with-privy](https://github.com/Lightprotocol/examples-light-token/tree/main/toolkits/sign-with-privy) | [sign-with-privy.md](references/sign-with-privy.md) |
+| Sign with Wallet Adapter | Integrate with Solana Wallet Adapter. | [wallet-adapter](https://zkcompression.com/light-token/wallets/wallet-adapter) | [sign-with-wallet-adapter](https://github.com/Lightprotocol/examples-light-token/tree/main/toolkits/sign-with-wallet-adapter) | [sign-with-adapter.md](references/sign-with-adapter.md) |
+| Gasless transactions | Abstract SOL fees. Sponsor top-ups and transaction fees. | [gasless-transactions](https://zkcompression.com/light-token/wallets/gasless-transactions) | [gasless-transactions](https://github.com/Lightprotocol/examples-light-token/tree/main/toolkits/gasless-transactions) | [gasless-transactions.md](references/gasless-transactions.md) |
+| SPL to Light comparison | Side-by-side API mapping. | | | [spl-to-light.md](references/spl-to-light.md) |
+| Token 2022 extensions | Supported Token 2022 extensions. | | | [extensions/overview.md](references/extensions/overview.md) |
 
 ## SDK references
 

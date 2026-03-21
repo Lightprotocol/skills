@@ -57,6 +57,66 @@ const payer = Keypair.fromSecretKey(
 })();
 ```
 
+### Instruction
+
+```typescript
+import "dotenv/config";
+import { Keypair, sendAndConfirmTransaction, Transaction } from "@solana/web3.js";
+import { createRpc } from "@lightprotocol/stateless.js";
+import {
+    createMintInterface,
+    createAtaInterface,
+    mintToInterface,
+    getAssociatedTokenAddressInterface,
+    createApproveInterfaceInstructions,
+} from "@lightprotocol/compressed-token";
+import { homedir } from "os";
+import { readFileSync } from "fs";
+
+// devnet:
+// const RPC_URL = `https://devnet.helius-rpc.com?api-key=${process.env.API_KEY!}`;
+// const rpc = createRpc(RPC_URL);
+// localnet:
+const rpc = createRpc();
+
+const payer = Keypair.fromSecretKey(
+    new Uint8Array(
+        JSON.parse(readFileSync(`${homedir()}/.config/solana/id.json`, "utf8"))
+    )
+);
+
+(async function () {
+    const owner = Keypair.generate();
+    const { mint } = await createMintInterface(rpc, payer, payer, null, 9);
+    await createAtaInterface(rpc, payer, mint, owner.publicKey);
+    const ownerAta = getAssociatedTokenAddressInterface(mint, owner.publicKey);
+    await mintToInterface(rpc, payer, mint, ownerAta, payer, 1_000_000_000);
+
+    const delegate = Keypair.generate();
+
+    // Returns TransactionInstruction[][] — send sequentially
+    const batches = await createApproveInterfaceInstructions(
+        rpc,
+        payer.publicKey,
+        mint,
+        ownerAta,
+        delegate.publicKey,
+        500_000_000,
+        owner.publicKey,
+        9,
+    );
+
+    for (let i = 0; i < batches.length - 1; i++) {
+        await sendAndConfirmTransaction(rpc, new Transaction().add(...batches[i]), [payer, owner]);
+    }
+    const approveTx = new Transaction().add(...batches[batches.length - 1]);
+    const signature = await sendAndConfirmTransaction(rpc, approveTx, [payer, owner]);
+
+    console.log("Approved delegate:", delegate.publicKey.toBase58());
+    console.log("Tx:", signature);
+})();
+```
+
 ## Rust
 
 ### Action

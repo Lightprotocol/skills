@@ -1,5 +1,7 @@
 # Show balance
 
+`getAtaInterface` returns a unified balance aggregating Light Token (hot + cold), SPL, and Token 2022 sources in `parsed.amount`.
+
 ```typescript
 import {
   getAssociatedTokenAddressInterface,
