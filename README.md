@@ -4,7 +4,7 @@
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-Compatible-green.svg)](https://agentskills.io)
 
 ### Capabilities
-Light Token allows agents to build scalable Solana applications with rent-free token and mint accounts and PDA's.
+Light Token and ZK Compression allows you to build scalable Solana applications with rent-free token and mint accounts and PDA's.
 
 | Metric                                |               Light | Standard Solana |
 | ------------------------------------- | ------------------: | --------------: |
@@ -12,6 +12,10 @@ Light Token allows agents to build scalable Solana applications with rent-free t
 | **Token Account**                     |   **\~0.00001 SOL** |    \~0.0029 SOL |
 | **PDA (100-byte)**                    | **\~0.0000115 SOL** |    \~0.0016 SOL |
 
+* All light mint and token accounts are on-chain accounts like SPL, but the light token program sponsors the rent-exemption cost for you.
+* Light-token accounts can hold balances from any light, SPL, or Token-2022 mint.
+* Light-mint accounts represent a unique mint and optionally can store token-metadata. Functionally equivalent to SPL mints.
+* Light-PDAs are Solana PDAs with sponsored rent-exemption and can be implemented with minimal code changes to your existing Solana program. Your program logic stays mostly untouched, which keeps audit overhead minimal.
 
 ### Skills by Use Case
 
