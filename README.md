@@ -13,18 +13,15 @@ Light Token allows agents to build scalable Solana applications with rent-free t
 | **PDA (100-byte)**                    | **\~0.0000115 SOL** |    \~0.0016 SOL |
 
 
-> For additional documentation, see: [zkcompression.com](https://www.zkcompression.com)
-> For examples, see: [Lightprotocol/examples](https://github.com/Lightprotocol/examples)
-
 ### Skills by Use Case
-
-> Find dedicated [prompts for agents here](prompts).
 
 If you're use case does not have a dedicated skill, start with the orchestrator: [skills/agent-dev-orchestrator](skills/agent-dev-orchestrator/)
 
 ```bash
 npx skills add Lightprotocol/skills
 ```
+
+> Find dedicated [prompts for agents here](prompts).
 
 | Use case                                                                                                                                 | Skill                                                                                             |
 | ---------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
@@ -37,6 +34,9 @@ npx skills add Lightprotocol/skills
 | For program development on Solana with infrequently accessed state, such as per-user state, DePIN registrations, ...                     | [solana-compression](https://github.com/Lightprotocol/skills/tree/main/skills/solana-compression) |
 | For testing with Light Protocol programs and clients on localnet, devnet, and mainnet validation                                         | [testing](https://github.com/Lightprotocol/skills/tree/main/skills/testing)                       |
 | For questions about compressed accounts, Light SDK, Solana development, Claude Code features, or agent skills                            | [ask-mcp](https://github.com/Lightprotocol/skills/tree/main/skills/ask-mcp)                       |
+
+> For additional documentation, see: [zkcompression.com](https://www.zkcompression.com)
+> For examples, see: [Lightprotocol/examples](https://github.com/Lightprotocol/examples)
 
 ### Recommended Workflow
 
