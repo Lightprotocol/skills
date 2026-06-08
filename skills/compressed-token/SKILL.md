@@ -25,12 +25,13 @@ Compressed token accounts store balance, owner, mint, and delegate like SPL toke
 ## When to use compressed tokens
 
 - Token distribution and airdrops without paying up-front rent per recipient
-- Storing token balances rent-free for accounts written to infrequently
+- Sending Payments, Payroll, and similar flow etc.
+- Storing token balances rent-free
 - Token-2022 mints with metadata and other supported extensions
 
 ## How it works
 
-Compressed tokens use a standard SPL (or Token-2022) mint plus a token pool. The token pool is an omnibus account that locks SPL tokens while they are compressed and releases them on decompression. Create the pool with the mint via `createMint()`, or add a pool to an existing mint with `createTokenPool()`.
+Compressed tokens use a standard SPL (or Token-2022) mint plus an interface pda. The token pool is an omnibus account that locks SPL tokens while they are compressed and releases them on decompression. Create the pool with the mint via `createMint()`, or add a pool to an existing mint with `createTokenPool()`.
 
 ```text
 SPL mint --register--> token pool (omnibus PDA)
