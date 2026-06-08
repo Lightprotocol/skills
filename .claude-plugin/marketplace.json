@@ -11,7 +11,7 @@
     {
       "name": "solana-rent-free-dev",
       "source": "./",
-      "description": "Rent-free Solana development skills: DeFi, tokens, payments, testing, and more",
+      "description": "Rent-free Solana development skills: compressed tokens, compressed PDAs, ZK programs, and testing",
       "version": "1.0.0"
     }
   ]

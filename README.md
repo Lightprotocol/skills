@@ -1,25 +1,20 @@
-# Solana Agent Skills for rent-free development: light PDA, token and mint accounts, and compressed PDA.
+# Solana Agent Skills for rent-free development: compressed tokens and compressed PDAs.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-Compatible-green.svg)](https://agentskills.io)
 
 ### Capabilities
-Light Token and ZK Compression allows you to build scalable Solana applications with rent-free token and mint accounts and PDA's.
+ZK Compression lets you build scalable Solana applications with rent-free compressed token accounts and compressed PDAs.
 
-| Metric                                |               Light | Standard Solana |
-| ------------------------------------- | ------------------: | --------------: |
-| **Mint Account**                      |   **\~0.00001 SOL** |    \~0.0015 SOL |
-| **Token Account**                     |   **\~0.00001 SOL** |    \~0.0029 SOL |
-| **PDA (100-byte)**                    | **\~0.0000115 SOL** |    \~0.0016 SOL |
+| Creation cost          | Compressed          | Standard Solana |
+| ---------------------- | ------------------: | --------------: |
+| **Token Account**      | **\~5,000 lamports** | \~2,000,000 lamports |
+| **PDA (128-byte)**     | **\~5,000 lamports** | \~1,100,000 lamports |
 
-* All light mint and token accounts are on-chain accounts like SPL, but the light token program sponsors the rent-exemption cost for you.
-* Light-token accounts can hold balances from any light, SPL, or Token-2022 mint.
-* Light-mint accounts represent a unique mint and optionally can store token-metadata. Functionally equivalent to SPL mints.
-* Light-PDAs are Solana PDAs with sponsored rent-exemption and can be implemented with minimal code changes to your existing Solana program. Your program logic stays mostly untouched, which keeps audit overhead minimal.
+* Compressed token accounts are always compressed and rent-free. Any SPL or Token-2022 token can be compressed and decompressed at will. The SPL mint and token pool still pay rent; each holder's compressed token account does not.
+* Compressed PDAs are derived like regular PDAs, but the program invokes the Light System Program (not the System Program) with a validity proof. Use them for per-user state, DePIN registrations, nullifiers, and infrequently accessed accounts.
 
 ### Skills by Use Case
-
-If you're use case does not have a dedicated skill, start with the orchestrator: [skills/agent-dev-orchestrator](skills/agent-dev-orchestrator/)
 
 ```bash
 npx skills add Lightprotocol/skills
@@ -29,13 +24,9 @@ npx skills add Lightprotocol/skills
 
 | Use case                                                                                                                                 | Skill                                                                                             |
 | ---------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| Skill for payment flows using Light Token APIs for sponsored rent-exemption.                                                             | [payments](https://github.com/Lightprotocol/skills/tree/main/skills/payments)                     |
-| For Solana program development with tokens and PDAs, Light is 200x cheaper than SPL/ Solana and has minimal code differences             | [light-sdk](https://github.com/Lightprotocol/skills/tree/main/skills/light-sdk)                   |
-| For client development with tokens on Solana, Light Token is 200x cheaper than SPL and has minimal changes                               | [light-token-client](https://github.com/Lightprotocol/skills/tree/main/skills/light-token-client) |
-| For data pipelines, aggregators, or indexers, real-time account state streaming on Solana with light account hot/cold lifecycle tracking | [data-streaming](https://github.com/Lightprotocol/skills/tree/main/skills/data-streaming)         |
-| For token distribution on Solana 5000x cheaper than SPL (rewards, airdrops, depins, ...)                                                 | [token-distribution](https://github.com/Lightprotocol/skills/tree/main/skills/token-distribution) |
-| For custom ZK Solana programs and privacy-preserving applications to prevent double spending                                             | [zk-nullifier](https://github.com/Lightprotocol/skills/tree/main/skills/zk-nullifier)             |
-| For program development on Solana with infrequently accessed state, such as per-user state, DePIN registrations, ...                     | [solana-compression](https://github.com/Lightprotocol/skills/tree/main/skills/solana-compression) |
+| For compressed token operations on Solana ~400x cheaper than SPL: create mints, mint, transfer, approve, burn, compress/decompress, merge, Token-2022, and token distribution                | [compressed-token](https://github.com/Lightprotocol/skills/tree/main/skills/compressed-token)     |
+| For program development on Solana with infrequently accessed state, such as per-user state, DePIN registrations, nullifiers, or custom compressed accounts                                   | [compressed-pda](https://github.com/Lightprotocol/skills/tree/main/skills/compressed-pda)         |
+| For custom ZK Solana programs and privacy-preserving applications to prevent double spending                                             | [zk](https://github.com/Lightprotocol/skills/tree/main/skills/zk)                                 |
 | For testing with Light Protocol programs and clients on localnet, devnet, and mainnet validation                                         | [testing](https://github.com/Lightprotocol/skills/tree/main/skills/testing)                       |
 | For questions about compressed accounts, Light SDK, Solana development, Claude Code features, or agent skills                            | [ask-mcp](https://github.com/Lightprotocol/skills/tree/main/skills/ask-mcp)                       |
 
@@ -49,7 +40,7 @@ npx skills add Lightprotocol/skills
    * Use `AskUserQuestion` to resolve blind spots
    * All questions must be resolved before execution
 2. **Identify references and skills**
-   * Match task to available [skills](#defi) below
+   * Match task to available [skills](#skills-by-use-case) below
    * Locate relevant [documentation and examples](#documentation-and-examples)
 3. **Write plan file** (YAML task format)
    * Use `AskUserQuestion` for anything unclear — never guess or assume
@@ -78,11 +69,11 @@ Add the marketplace and install:
 /plugin marketplace add Lightprotocol/skills
 ```
 
-All skills are included. Use them by name (`/light-sdk`, `/light-token-client`, `/testing`, etc.) or let Claude invoke them based on task context.
+All skills are included. Use them by name (`/compressed-token`, `/compressed-pda`, `/zk`, `/testing`, `/ask-mcp`) or let Claude invoke them based on task context.
 
 ### OpenClaw
 
-Install as a plugin (all 9 skills):
+Install as a plugin (all 5 skills):
 
 ```bash
 openclaw plugins install ./path/to/skills
@@ -102,7 +93,7 @@ The plugin manifest is defined in [`openclaw.plugin.json`](openclaw.plugin.json)
 2. Navigate to **Rules & Commands** → **Project Rules** → **Add Rule** → **Remote Rule (GitHub)**
 3. Enter: `https://github.com/Lightprotocol/skills.git`
 
-Skills are auto-discovered based on context. Ask about light-token, defi, payments, or program migration and the agent uses the relevant skill automatically.
+Skills are auto-discovered based on context. Ask about compressed tokens, compressed PDAs, ZK programs, or testing and the agent uses the relevant skill automatically.
 
 ## License
 

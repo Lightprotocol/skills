@@ -6,18 +6,13 @@ AI agent skills for rent-free Solana development using Light Protocol primitives
 
 ```
 agent-skills/
-├── skills/                      # 9 domain skills
-│   ├── token-distribution/
+├── skills/                      # 5 domain skills
 │   ├── ask-mcp/
-│   ├── data-streaming/
-│   ├── light-sdk/
-│   ├── light-token-client/
-│   ├── solana-compression/
-│   ├── payments/
+│   ├── compressed-pda/
+│   ├── compressed-token/
 │   ├── testing/
-│   └── zk-nullifier/
-├── scripts/                     # Utility scripts
-│   └── sync-to-docs.sh
+│   └── zk/
+├── prompts/                     # Agent prompts (compressed-PDA programs + clients)
 ├── openclaw.plugin.json         # Plugin manifest
 └── README.md
 ```
@@ -26,15 +21,11 @@ agent-skills/
 
 | Name | Description |
 |------|-------------|
-| token-distribution | For token distribution on Solana 5000x cheaper than SPL (rewards, airdrops, depins, ...). @lightprotocol/compressed-token (TypeScript). Reference examples for custom claim support. |
-| ask-mcp | For questions about compressed accounts, Light SDK, Solana development, Claude Code features, or agent skills. AI-powered answers grounded in repository context via DeepWiki MCP. |
-| data-streaming | For data pipelines, aggregators, or indexers, real-time account state streaming on Solana with light account hot/cold lifecycle tracking. Stream Light token accounts, mint accounts, and PDAs via Laserstream gRPC. |
-| light-sdk | For Solana program development with tokens and PDAs, Light is 200x cheaper than SPL/ Solana and has minimal code differences (e.g. for any Solana program and Defi such as AMMs, vaults, lending). Includes rent-free Light-PDAs, token accounts, and mints. Light SDK with Anchor or Pinocchio. Includes for Defi Router integration guide. Minimal program logic changes. |
-| light-token-client | For client development with tokens on Solana, Light Token is 200x cheaper than SPL and has minimal changes. Skill includes guides for create mints, associated token accounts, transfer, approve, burn, wrap, and more. @lightprotocol/compressed-token (TypeScript) and light_token_client (Rust). |
-| solana-compression | For program development on Solana for per-user state, DePIN registrations, or custom compressed accounts ~160x cheaper and without rent-exemption. Create, update, close, burn, and reinitialize compressed accounts. |
-| payments | Skill for payment flows using Light Token APIs for sponsored rent-exemption. |
+| compressed-token | For compressed token operations on Solana ~400x cheaper than SPL: create mints with token pools, mint, transfer, approve, revoke, compress, decompress, merge, Token-2022, and token distribution (airdrops). Compressed token accounts are always rent-free. @lightprotocol/compressed-token (TypeScript). |
+| compressed-pda | For program development on Solana for per-user state, DePIN registrations, nullifiers, or custom compressed accounts ~160x cheaper and without rent-exemption. Programs invoke the Light System Program with a validity proof. Create, update, close, burn, and reinitialize compressed accounts. |
+| zk | For custom ZK Solana programs and privacy-preserving applications to prevent double spending. Guide to integrate rent-free nullifier PDAs for double-spend prevention. |
 | testing | For testing with Light Protocol programs and clients on localnet, devnet, and mainnet validation. |
-| zk-nullifier | For custom ZK Solana programs and privacy-preserving applications to prevent double spending. Guide to integrate rent-free nullifier PDAs for double-spend prevention. |
+| ask-mcp | For questions about compressed accounts, Light SDK, Solana development, Claude Code features, or agent skills. AI-powered answers grounded in repository context via DeepWiki MCP. |
 
 ## Adding a New Skill
 

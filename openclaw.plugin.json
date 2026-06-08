@@ -1,7 +1,7 @@
 {
   "id": "solana-rent-free-dev",
   "name": "Light Protocol",
-  "description": "Rent-free Solana development skills: DeFi, payments, token distribution, pda's, zk or privacy program guide, testing, and more",
+  "description": "Rent-free Solana development skills: compressed tokens, compressed PDAs, ZK or privacy program guides, and testing",
   "version": "1.0.0",
   "homepage": "https://www.zkcompression.com",
   "repository": "https://github.com/Lightprotocol/skills",
@@ -23,15 +23,11 @@
     }
   ],
   "skills": [
-    "skills/token-distribution",
     "skills/ask-mcp",
-    "skills/data-streaming",
-    "skills/light-sdk",
-    "skills/light-token-client",
-    "skills/solana-compression",
-    "skills/payments",
+    "skills/compressed-pda",
+    "skills/compressed-token",
     "skills/testing",
-    "skills/zk-nullifier"
+    "skills/zk"
   ],
   "configSchema": {
     "type": "object",
