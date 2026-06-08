@@ -1,6 +1,6 @@
 # Compress and decompress SPL tokens
 
-Use `compress()` to convert SPL tokens into compressed tokens and `decompress()` to convert them back. Both require an SPL mint with a token pool (from `createMint()` or `createTokenPool()`).
+Use `compress()` to convert SPL tokens into compressed tokens and `decompress()` to convert them back. Both require an SPL mint with an interface PDA (from `createMint()` or `createTokenPool()`).
 
 - `compress(amount, sourceTokenAccount, toAddress)` compresses a specific amount from a source SPL account to a chosen recipient. Use for transfers and precise amounts.
 - `compressSplTokenAccount(tokenAccount, remainingAmount?)` compresses the entire SPL account balance (minus an optional remaining amount) to the same owner. Use to migrate complete token accounts and reclaim rent afterwards. See the full-account section below.
@@ -24,7 +24,7 @@ await splMintTo(rpc, payer, mint, ata.address, payer, 1_000_000_000, [], undefin
 const compressTx = await compress(
     rpc,
     payer,
-    mint,            // SPL mint with token pool
+    mint,            // SPL mint with interface PDA
     400_000_000,     // amount
     owner,           // owner of SPL tokens
     ata.address,     // source SPL token account
@@ -40,7 +40,7 @@ import { decompress } from '@lightprotocol/compressed-token';
 const decompressTx = await decompress(
     rpc,
     payer,
-    mint,         // SPL mint with token pool
+    mint,         // SPL mint with interface PDA
     300_000_000,  // amount
     owner,        // owner of compressed tokens
     ata.address,  // destination SPL token account
@@ -64,7 +64,7 @@ await compressSplTokenAccount(rpc, payer, mint, owner, tokenAccount, bn(100_000_
 
 ## Instruction-level compress and decompress
 
-When building instructions yourself, fetch and select pool info.
+When building instructions yourself, fetch and select interface PDA info.
 
 ```typescript
 import { CompressedTokenProgram, getTokenPoolInfos, selectTokenPoolInfo, selectTokenPoolInfosForDecompression, selectMinCompressedTokenAccountsForTransfer } from '@lightprotocol/compressed-token';

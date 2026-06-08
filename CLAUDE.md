@@ -21,7 +21,7 @@ agent-skills/
 
 | Name | Description |
 |------|-------------|
-| compressed-token | For compressed token operations on Solana ~400x cheaper than SPL: create mints with token pools, mint, transfer, approve, revoke, compress, decompress, merge, Token-2022, and token distribution (airdrops). Compressed token accounts are always rent-free. @lightprotocol/compressed-token (TypeScript). |
+| compressed-token | For compressed token operations on Solana ~400x cheaper than SPL: create mints with interface PDAs, mint, transfer, approve, revoke, compress, decompress, merge, Token-2022, and token distribution (airdrops). Compressed token accounts are always rent-free. @lightprotocol/compressed-token (TypeScript). |
 | compressed-pda | For program development on Solana for per-user state, DePIN registrations, nullifiers, or custom compressed accounts ~160x cheaper and without rent-exemption. Programs invoke the Light System Program with a validity proof. Create, update, close, burn, and reinitialize compressed accounts. |
 | zk | For custom ZK Solana programs and privacy-preserving applications to prevent double spending. Guide to integrate rent-free nullifier PDAs for double-spend prevention. |
 | testing | For testing with Light Protocol programs and clients on localnet, devnet, and mainnet validation. |

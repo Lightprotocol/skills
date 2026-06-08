@@ -18,7 +18,7 @@ const recipient = Keypair.generate();
 const transactionSignature = await transfer(
     rpc,
     payer,
-    mint,                 // SPL mint with token pool
+    mint,                 // SPL mint with interface PDA
     500_000_000,          // amount
     owner,                // owner signer
     recipient.publicKey,  // destination

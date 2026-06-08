@@ -1,6 +1,6 @@
 # Token-2022 with compression
 
-Compressed tokens support Token-2022 mints. Create the Token-2022 mint with its extensions, register a token pool with `createTokenPool()` (passing `TOKEN_2022_PROGRAM_ID`), then mint, compress, and transfer as usual.
+Compressed tokens support Token-2022 mints. Create the Token-2022 mint with its extensions, register an interface PDA with `createTokenPool()` (passing `TOKEN_2022_PROGRAM_ID`), then mint, compress, and transfer as usual.
 
 ## Supported mint extensions
 

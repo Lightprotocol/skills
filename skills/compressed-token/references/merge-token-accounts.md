@@ -23,7 +23,7 @@ await mintTo(rpc, payer, mint, owner.publicKey, payer, bn(300_000_000));
 const transactionSignature = await mergeTokenAccounts(
     rpc,
     payer,
-    mint,   // SPL mint with token pool
+    mint,   // SPL mint with interface PDA
     owner,  // owner signer
 );
 ```

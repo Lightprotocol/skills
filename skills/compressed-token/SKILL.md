@@ -1,6 +1,6 @@
 ---
 name: compressed-token
-description: "For compressed token operations on Solana ~400x cheaper than SPL: create mints with token pools, mint, transfer, approve, revoke, compress, decompress, merge, and Token-2022 with compression. Compressed token accounts are always rent-free. @lightprotocol/compressed-token (TypeScript) with createRpc() from @lightprotocol/stateless.js."
+description: "For compressed token operations on Solana ~400x cheaper than SPL: create mints with interface PDAs, mint, transfer, approve, revoke, compress, decompress, merge, and Token-2022 with compression. Compressed token accounts are always rent-free. @lightprotocol/compressed-token (TypeScript) with createRpc() from @lightprotocol/stateless.js."
 metadata:
   source: https://github.com/Lightprotocol/skills
   documentation: https://www.zkcompression.com
@@ -14,7 +14,7 @@ allowed-tools: Bash(git:*), Bash(node:*), Bash(npm:*), Read, Edit, Glob, Grep, W
 
 # Compressed token client
 
-Build token applications with `@lightprotocol/compressed-token` (TypeScript). Compressed token accounts are always rent-free. The SPL mint and token pool still pay rent, but each holder's compressed token account costs a fraction of an SPL account.
+Build token applications with `@lightprotocol/compressed-token` (TypeScript). Compressed token accounts are always rent-free. The SPL mint and interface PDA still pay rent, but each holder's compressed token account costs a fraction of an SPL account.
 
 | Creation cost     | SPL                 | Compressed           |
 | :---------------- | :------------------ | :------------------- |
@@ -31,15 +31,15 @@ Compressed token accounts store balance, owner, mint, and delegate like SPL toke
 
 ## How it works
 
-Compressed tokens use a standard SPL (or Token-2022) mint plus an interface pda. The token pool is an omnibus account that locks SPL tokens while they are compressed and releases them on decompression. Create the pool with the mint via `createMint()`, or add a pool to an existing mint with `createTokenPool()`.
+Compressed tokens use a standard SPL (or Token-2022) mint plus an interface PDA. The interface PDA is an omnibus account that locks SPL tokens while they are compressed and releases them on decompression. Create it with the mint via `createMint()`, or add one to an existing mint with `createTokenPool()`.
 
 ```text
-SPL mint --register--> token pool (omnibus PDA)
+SPL mint --register--> interface PDA (omnibus PDA)
 mintTo / compress --> compressed token accounts (rent-free, in state tree)
 decompress --> back to SPL token account
 ```
 
-Each mint supports a maximum of 4 token pools. Pools get write-locked during compression and decompression, so add pools with `addTokenPools()` to raise per-block write-lock capacity for high-throughput distribution.
+Each mint supports a maximum of 4 interface PDAs. They get write-locked during compression and decompression, so add more with `addTokenPools()` to raise per-block write-lock capacity for high-throughput distribution.
 
 ## Prerequisites
 
@@ -59,7 +59,7 @@ const rpc = createRpc(`https://devnet.helius-rpc.com?api-key=${process.env.API_K
 
 | Task | Reference |
 |------|-----------|
-| Create a mint with token pool, add pools | [references/create-mint.md](references/create-mint.md) |
+| Create a mint with interface PDA, add more | [references/create-mint.md](references/create-mint.md) |
 | Mint compressed tokens | [references/mint-to.md](references/mint-to.md) |
 | Transfer compressed tokens | [references/transfer.md](references/transfer.md) |
 | Approve and revoke delegates | [references/approve-revoke.md](references/approve-revoke.md) |

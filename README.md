@@ -11,7 +11,7 @@ ZK Compression lets you build scalable Solana applications with rent-free compre
 | **Token Account**      | **\~5,000 lamports** | \~2,000,000 lamports |
 | **PDA (128-byte)**     | **\~5,000 lamports** | \~1,100,000 lamports |
 
-* Compressed token accounts are always compressed and rent-free. Any SPL or Token-2022 token can be compressed and decompressed at will. The SPL mint and token pool still pay rent; each holder's compressed token account does not.
+* Compressed token accounts are always compressed and rent-free. Any SPL or Token-2022 token can be compressed and decompressed at will. The SPL mint and interface PDA still pay rent; each holder's compressed token account does not.
 * Compressed PDAs are derived like regular PDAs, but the program invokes the Light System Program (not the System Program) with a validity proof. Use them for per-user state, DePIN registrations, nullifiers, and infrequently accessed accounts.
 
 ### Skills by Use Case

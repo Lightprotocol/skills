@@ -21,7 +21,7 @@ const delegate = Keypair.generate();
 const approveSignature = await approve(
     rpc,
     payer,
-    mint,                  // SPL mint with token pool
+    mint,                  // SPL mint with interface PDA
     new BN(500_000_000),   // amount the delegate may spend
     owner,                 // owner signer
     delegate.publicKey,    // delegate

@@ -1,6 +1,6 @@
 # Mint compressed tokens
 
-Use `mintTo()` to create compressed token accounts for recipients and increase the mint's supply. Only the mint authority can call it. The mint must already have a token pool (created via `createMint()` or `createTokenPool()`).
+Use `mintTo()` to create compressed token accounts for recipients and increase the mint's supply. Only the mint authority can call it. The mint must already have an interface PDA (created via `createMint()` or `createTokenPool()`).
 
 ```typescript
 import { Keypair } from '@solana/web3.js';
@@ -16,7 +16,7 @@ const recipient = Keypair.generate();
 const transactionSignature = await mintTo(
     rpc,
     payer,
-    mint,                 // SPL mint with token pool
+    mint,                 // SPL mint with interface PDA
     recipient.publicKey,  // recipient
     payer,                // mint authority
     1_000_000_000,        // amount
@@ -60,7 +60,7 @@ const balance = accounts.items[0].parsed.amount; // BN
 
 ## Troubleshooting
 
-- **TokenPool not found** — the mint has no pool. Create the mint with `createMint()` or add a pool with `createTokenPool()`.
+- **TokenPool not found** — the mint has no interface PDA. Create the mint with `createMint()` or add one with `createTokenPool()`.
 - **Amount and toPubkey arrays must have the same length** — when minting to multiple recipients, the recipient and amount arrays must match.
 
 ## Source

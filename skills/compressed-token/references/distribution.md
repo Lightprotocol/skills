@@ -1,6 +1,6 @@
 # Token distribution and airdrops
 
-Compressed tokens make airdrops cheap because recipient accounts are rent-free. A common flow is: create an SPL mint with a token pool, mint SPL tokens to a source account, then compress to many recipients in one or more transactions. Recipients receive compressed tokens directly in their wallets; no claim step is required.
+Compressed tokens make airdrops cheap because recipient accounts are rent-free. A common flow is: create an SPL mint with an interface PDA, mint SPL tokens to a source account, then compress to many recipients in one or more transactions. Recipients receive compressed tokens directly in their wallets; no claim step is required.
 
 Use the simple flow for small recipient lists and the batched flow for large ones. For claim-based distribution, hold tokens compressed and decompress on claim.
 
@@ -18,13 +18,13 @@ const rpc = createRpc(process.env.RPC_ENDPOINT);
 const payer = PAYER_KEYPAIR;
 const recipients = [/* PublicKey[] */];
 
-// Setup: SPL mint + token pool + source ATA with tokens
+// Setup: SPL mint + interface PDA + source ATA with tokens
 const mint = await createMint(rpc, payer, payer.publicKey, null, 9);
 await createTokenPool(rpc, payer, mint);
 const source = await getOrCreateAssociatedTokenAccount(rpc, payer, mint, payer.publicKey);
 await mintTo(rpc, payer, mint, source.address, payer.publicKey, 100_000_000_000);
 
-// Select a state tree and a token pool
+// Select a state tree and an interface PDA
 const treeInfo = selectStateTreeInfo(await rpc.getStateTreeInfos());
 const poolInfo = selectTokenPoolInfo(await getTokenPoolInfos(rpc, mint));
 
@@ -61,7 +61,7 @@ await sendAndConfirmTx(rpc, tx);
 
 ## Batched airdrop (many recipients)
 
-For thousands of recipients, build batches of instructions and send them with retry logic. The `createAirdropInstructions` helper chunks recipients: `maxRecipientsPerInstruction` defaults to 5 and `maxInstructionsPerTransaction` defaults to 3, so each transaction handles up to 15 recipients. It selects a fresh state tree and token pool per transaction and packs everything behind the address lookup table.
+For thousands of recipients, build batches of instructions and send them with retry logic. The `createAirdropInstructions` helper chunks recipients: `maxRecipientsPerInstruction` defaults to 5 and `maxInstructionsPerTransaction` defaults to 3, so each transaction handles up to 15 recipients. It selects a fresh state tree and interface PDA per transaction and packs everything behind the address lookup table.
 
 ```typescript
 import { CompressedTokenProgram, selectTokenPoolInfo, TokenPoolInfo } from '@lightprotocol/compressed-token';
@@ -124,7 +124,7 @@ Sign and send each batch as a versioned transaction with the lookup table, retry
 
 ## Decompress on claim
 
-To gate distribution behind a claim, hold tokens compressed and let the claimer decompress to their SPL account. Select input accounts, fetch a validity proof, select pool infos for decompression, then build the decompress instruction.
+To gate distribution behind a claim, hold tokens compressed and let the claimer decompress to their SPL account. Select input accounts, fetch a validity proof, select interface PDA infos for decompression, then build the decompress instruction.
 
 ```typescript
 import { CompressedTokenProgram, getTokenPoolInfos, selectMinCompressedTokenAccountsForTransfer, selectTokenPoolInfosForDecompression } from '@lightprotocol/compressed-token';
